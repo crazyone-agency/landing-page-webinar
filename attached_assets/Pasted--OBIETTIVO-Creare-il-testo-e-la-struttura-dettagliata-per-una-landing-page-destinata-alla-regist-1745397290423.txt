@@ -1,0 +1,72 @@
+**OBIETTIVO:** Creare il testo e la struttura dettagliata per una landing page destinata alla registrazione al webinar gratuito "Rivoluzione a piccoli passi" di Salvatore Garufi (SG People Group) del 3 Maggio.
+
+**SCOPI SPECIFICI DELLA LANDING PAGE:**
+1.  **Massimizzare le Iscrizioni Qualificate:** Convertire i visitatori interessati in iscritti al webinar.
+2.  **Riflettere il Brand SG People:** Comunicare professionalità, approccio scientifico (neuroscienze, psicologia) ma pratico e orientato ai risultati, in linea con la "Comunicazione Smart".
+3.  **Fornire un'Esperienza Utente (UX) Unica e Fluida:** Deve essere facile da navigare, chiara e piacevole, guidando l'utente all'azione senza frizioni.
+4.  **Massimizzare la Curiosità:** Stimolare l'interesse per il contenuto del webinar, facendo percepire il valore unico dell'evento.
+5.  **Minimizzare il Tasso di No-Show:** Iniziare a creare commitment e anticipazione fin dalla pagina di registrazione.
+6.  **Strumento di Prenotazione Immediato:** Il form di iscrizione deve essere semplice e diretto.
+
+**TARGET AUDIENCE:** Principalmente B2C interessati a sviluppo personale/professionale, miglioramento performance, gestione stress/overload, che cercano soluzioni pratiche basate su approcci scientifici ma applicabili nella vita quotidiana.
+
+**CONTENUTO DEL WEBINAR:** "Rivoluzione a piccoli passi" - focus su come micro-azioni quotidiane basate su neuroscienze possono portare a grandi cambiamenti in termini di focus, produttività e benessere, superando procrastinazione e sovraccarico mentale. Speaker: Salvatore Garufi.
+
+**PRINCIPI GUIDA (Ispirazione Brunson/Cosentino):**
+* **Hook Forte:** Catturare l'attenzione immediatamente.
+* **Value Proposition Chiara:** Comunicare subito cosa si ottiene partecipando.
+* **Urgency/Scarcity:** Indicare posti limitati o tempo limitato per l'iscrizione (se applicabile e veritiero).
+* **Social Proof:** Integrare elementi di prova sociale (se disponibili: testimonianze brevi, loghi aziendali dove SG People ha operato, numero partecipanti precedenti).
+* **Benefici vs Caratteristiche:** Focalizzarsi sui risultati e trasformazioni per l'utente.
+* **Call to Action (CTA) Evidenti:** Pulsanti chiari e ripetuti.
+* **Minimizzare Distrazioni:** Design pulito, focalizzato sulla conversione.
+
+**ELEMENTI DA INCLUDERE (Struttura e Testo):**
+
+1.  **Above the Fold (Sezione Principale Visibile Subito):**
+    * **Headline Principale (Hook):** Molto forte, orientata al beneficio/curiosità. Es: "Trasforma la tua Routine (e i tuoi Risultati) con 5 Minuti al Giorno: La Scienza delle Micro-Azioni Rivelata". Oppure: "Stanco di Grandi Propositi che Falliscono? Scopri la Rivoluzione dei Piccoli Passi (Gratis)".
+    * **Sub-headline:** Espande il beneficio o chiarisce il target/argomento. Es: "Il webinar gratuito dove Salvatore Garufi ti insegna il protocollo neuroscientifico per battere la procrastinazione e l'overload mentale, un micro-passo alla volta."
+    * **Visual:** Immagine di alta qualità di Salvatore Garufi o grafica evocativa del concetto "piccoli passi, grandi risultati" (allineata al brand SG People). *Opzionale ma consigliato:* Breve video (30-60 sec) di Salvatore che invita personalmente e anticipa un "segreto" che svelerà.
+    * **CTA Primaria:** Pulsante ben visibile. Es: "Riserva il Tuo Posto Gratuito Ora!", "Sì, Voglio Iniziare la Mia Rivoluzione!", "Iscrivimi Subito!".
+    * *(Opzionale - Urgency):* Breve testo tipo "Posti Limitati!" o "Solo per i primi 200 iscritti".
+
+2.  **Sezione Problema/Soluzione:**
+    * **Descrivi il Dolore:** Breve sezione che empatizza con i problemi del target (procrastinazione, sentirsi sopraffatti, mancanza di focus, difficoltà a mantenere abitudini). Usare domande retoriche. Es: "Ti senti intrappolato in un ciclo di 'vorrei ma non riesco'?"
+    * **Presenta la Soluzione (Il Webinar):** Introdurre il webinar come la risposta specifica. Es: "E se esistesse un metodo scientifico per 'ingannare' il tuo cervello e trasformare la resistenza in azione... con pochi minuti al giorno?"
+
+3.  **Sezione "Cosa Imparerai":**
+    * **Bullet Points Focalizzati sui Benefici:** Elenco puntato chiaro e conciso di cosa otterranno i partecipanti. Non solo cosa *farà* Salvatore, ma cosa *potranno fare loro* dopo. Es:
+        * "Identificare le 3 micro-azioni più potenti per la TUA situazione."
+        * "Applicare subito il protocollo SG People per ridurre l'overload mentale."
+        * "Capire la neuroscienza dietro il cambiamento duraturo (spiegata semplice)."
+        * "Creare un piano 'a prova di fallimento' per raggiungere i tuoi obiettivi."
+        * "Smettere di procrastinare sulle cose che contano davvero."
+
+4.  **Sezione Speaker (Salvatore Garufi):**
+    * Breve bio che ne evidenzi l'autorevolezza e l'esperienza (formatore, consulente, psicologo, fondatore SG People, esperto Comunicazione Smart/neuroscienze applicate). Foto professionale.
+    * Enfatizzare la sua capacità di tradurre concetti complessi in strategie pratiche.
+
+5.  **Sezione Social Proof (Se Disponibile):**
+    * Brevi citazioni/testimonial (anche solo 1-2 potenti).
+    * Loghi di aziende clienti (se pertinenti al target o per autorevolezza generale).
+    * Numeri (es: "Oltre 1200 professionisti già formati con il metodo SG People").
+
+6.  **Sezione "Come Funziona":**
+    * Dettagli logistici: Data (3 Maggio), Ora, Durata (es. 60 min + Q&A), Formato (Live, Online), Strumento (es. Zoom). Ribadire che è gratuito.
+
+7.  **Form di Registrazione:**
+    * Minimale: Nome, Email. (Valutare se serve altro, ma meno è meglio).
+    * Checkbox GDPR obbligatoria e chiara.
+    * Pulsante CTA (uguale o simile a quello above the fold).
+
+8.  **CTA Finale:**
+    * Ripetere il pulsante di iscrizione alla fine della pagina.
+    * *(Opzionale - Per Minimizzare No-Show):* Testo vicino al form tipo: "Ti impegni a partecipare? Il tuo 'piccolo passo' inizia ora prenotando seriamente il tuo posto." Oppure: "Riceverai un promemoria e un link per aggiungerlo subito al tuo calendario."
+
+**OUTPUT DESIDERATO:**
+* Testo completo per ogni sezione della landing page.
+* Indicazioni sulla struttura/layout (quali elementi mettere in quale sezione).
+* Suggerimenti per elementi visuali o interattivi che migliorino l'UX e la curiosità (es. il video, un micro-quiz sulla pagina, un contatore animato per i posti).
+* Linguaggio e tono coerenti con il brand SG People (autorevole, scientifico, pratico, positivo, motivante).
+
+**EXTRA:** Pensa a come la pagina stessa possa essere un "piccolo passo" piacevole da compiere per l'utente (design pulito, caricamento veloce, copy coinvolgente).
