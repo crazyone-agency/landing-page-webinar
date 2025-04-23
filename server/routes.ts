@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { webinarRegistrationSchema } from "@shared/schema";
+import { webinarRegistrationSchema, courseInquirySchema } from "@shared/schema";
 import { ZodError } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -50,6 +50,57 @@ export async function registerRoutes(app: Express): Promise<Server> {
       return res.status(500).json({
         success: false,
         message: "An error occurred while fetching registrations"
+      });
+    }
+  });
+
+  // API route for course inquiries
+  app.post("/api/course/inquiry", async (req, res) => {
+    try {
+      // Validate the request body
+      const inquiryData = courseInquirySchema.parse(req.body);
+      
+      // Store the inquiry
+      const inquiry = await storage.createCourseInquiry({
+        ...inquiryData,
+        inquiryDate: new Date().toISOString(),
+      });
+
+      return res.status(201).json({
+        success: true,
+        message: "Richiesta di informazioni inviata con successo",
+        data: inquiry
+      });
+    } catch (error) {
+      if (error instanceof ZodError) {
+        return res.status(400).json({
+          success: false,
+          message: "Errore di validazione",
+          errors: error.errors
+        });
+      }
+
+      console.error("Course inquiry error:", error);
+
+      return res.status(500).json({
+        success: false,
+        message: "Si è verificato un errore durante l'elaborazione della tua richiesta"
+      });
+    }
+  });
+
+  // Get all course inquiries (admin only, in a real app you'd add auth middleware)
+  app.get("/api/course/inquiries", async (_req, res) => {
+    try {
+      const inquiries = await storage.getAllCourseInquiries();
+      return res.status(200).json({
+        success: true,
+        data: inquiries
+      });
+    } catch (error) {
+      return res.status(500).json({
+        success: false,
+        message: "An error occurred while fetching course inquiries"
       });
     }
   });
