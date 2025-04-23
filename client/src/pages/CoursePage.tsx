@@ -1,14 +1,11 @@
 import { useEffect } from "react";
-import CourseHeader from "@/components/CourseHeader";
-import CourseHeroSection from "@/components/CourseHeroSection";
+import DynamicHeader from "@/components/DynamicHeader";
+import ExclusiveOfferHero from "@/components/ExclusiveOfferHero";
+import ExclusiveOfferDetails from "@/components/ExclusiveOfferDetails";
+import ExclusiveOfferInquiryForm from "@/components/ExclusiveOfferInquiryForm";
+import ExclusiveOfferTestimonials from "@/components/ExclusiveOfferTestimonials";
 import CourseBioSection from "@/components/CourseBioSection";
-import CourseObstaclesSection from "@/components/CourseObstaclesSection";
-import CourseStepsSection from "@/components/CourseStepsSection";
-import CourseAudienceSection from "@/components/CourseAudienceSection";
-import CourseTestimonialsSection from "@/components/CourseTestimonialsSection";
-import CourseScientificSection from "@/components/CourseScientificSection";
 import CourseFaqSection from "@/components/CourseFaqSection";
-import CourseInquirySection from "@/components/CourseInquirySection";
 import CourseFooter from "@/components/CourseFooter";
 
 export default function CoursePage() {
@@ -18,18 +15,15 @@ export default function CoursePage() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <CourseHeader />
+    <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#010133' }}>
+      <DynamicHeader />
       <main className="flex-grow">
-        <CourseHeroSection />
+        <ExclusiveOfferHero />
+        <ExclusiveOfferDetails />
+        <ExclusiveOfferTestimonials />
         <CourseBioSection />
-        <CourseObstaclesSection />
-        <CourseStepsSection />
-        <CourseAudienceSection />
-        <CourseTestimonialsSection />
-        <CourseScientificSection />
         <CourseFaqSection />
-        <CourseInquirySection />
+        <ExclusiveOfferInquiryForm />
       </main>
       <CourseFooter />
     </div>
