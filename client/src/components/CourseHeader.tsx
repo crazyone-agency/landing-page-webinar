@@ -16,14 +16,19 @@ export default function CourseHeader() {
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center">
             <Link href="/">
-              <a className="flex items-center space-x-2 text-2xl font-bold text-gray-900">
+              <div className="flex items-center space-x-2 text-2xl font-bold text-gray-900 cursor-pointer">
                 <span style={{ color: brandColors.primary }}>SG</span>
                 <span style={{ color: brandColors.secondary }}>People</span>
-              </a>
+              </div>
             </Link>
           </div>
           
           <nav className="hidden md:flex space-x-8 items-center">
+            <Link href="/">
+              <span className="text-gray-700 hover:text-gray-900 font-medium cursor-pointer">
+                Home
+              </span>
+            </Link>
             <a 
               href="#percorso" 
               className="text-gray-700 hover:text-gray-900 font-medium"
