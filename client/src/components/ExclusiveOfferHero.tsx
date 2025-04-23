@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { brandColors } from "@/lib/course-utils";
+import OfferCountdown from "./OfferCountdown";
 
 export default function ExclusiveOfferHero() {
   const scrollToInquiry = () => {
@@ -67,6 +68,11 @@ export default function ExclusiveOfferHero() {
               a 37€ e vuole completare il percorso di trasformazione.
             </p>
             
+            {/* Countdown Timer - Mobile Only */}
+            <div className="mb-8 lg:hidden">
+              <OfferCountdown />
+            </div>
+            
             <div className="flex flex-col md:flex-row gap-4 justify-center lg:justify-start">
               <Button 
                 size="lg" 
@@ -93,6 +99,11 @@ export default function ExclusiveOfferHero() {
             className="relative"
           >
             <div className="bg-blue-800/50 backdrop-blur-sm p-8 rounded-lg border border-yellow-400/30">
+              {/* Countdown Timer - Desktop */}
+              <div className="hidden lg:block mb-6">
+                <OfferCountdown />
+              </div>
+              
               <div className="mb-6">
                 <div className="text-white text-lg mb-1">Prezzo originale</div>
                 <div className="text-4xl font-bold text-white relative inline-block">

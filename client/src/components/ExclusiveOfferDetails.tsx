@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 import { brandColors } from "@/lib/course-utils";
+import OfferCountdown from "./OfferCountdown";
 
 export default function ExclusiveOfferDetails() {
   return (
-    <section className="py-24 px-4 relative" style={{ backgroundColor: '#0a0a2e' }}>
+    <section className="py-24 px-4 relative" style={{ backgroundColor: '#0a0a2e' }} id="offerta-speciale">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <svg className="absolute left-0 top-0 h-full w-full" xmlns="http://www.w3.org/2000/svg">
@@ -33,6 +34,21 @@ export default function ExclusiveOfferDetails() {
             il percorso con noi. Per questo offriamo uno sconto speciale a chi ha già 
             acquisito lo Smart Revolution Sprint.
           </p>
+          
+          {/* Countdown and urgency messages - Mobile/tablet */}
+          <div className="mt-8 md:hidden">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+            >
+              <OfferCountdown className="max-w-md mx-auto" />
+              <p className="text-yellow-300 font-medium mt-4">
+                L'offerta scade il 12 maggio 2025 alle 11:30!
+              </p>
+            </motion.div>
+          </div>
         </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -78,6 +94,11 @@ export default function ExclusiveOfferDetails() {
                   </motion.li>
                 ))}
               </ul>
+              
+              {/* Countdown - Desktop/Large devices */}
+              <div className="mt-8 hidden md:block lg:hidden">
+                <OfferCountdown />
+              </div>
             </div>
           </motion.div>
           
@@ -141,9 +162,16 @@ export default function ExclusiveOfferDetails() {
                 </div>
                 
                 <div className="p-4 bg-yellow-400/10 border border-yellow-400/30 rounded-lg">
-                  <p className="text-yellow-300 font-medium">
+                  <div className="flex items-center mb-2">
+                    <svg className="w-5 h-5 text-yellow-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                    <span className="text-yellow-300 font-medium">Offerta a tempo limitato!</span>
+                  </div>
+                  
+                  <p className="text-white">
                     L'offerta è valida per chi ha già acquistato il workshop "Smart Revolution Sprint" a €37 
-                    e desidera completare il percorso di trasformazione personale.
+                    e scade <span className="text-yellow-300 font-semibold">48 ore dopo la fine del webinar</span> (12 maggio 2025 alle 11:30).
                   </p>
                 </div>
               </div>
