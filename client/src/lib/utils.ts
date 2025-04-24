@@ -33,10 +33,10 @@ export const courseOfferEndDate = addHours(webinarEndDate, 48); // 48 ore dopo l
 
 // Social media links
 export const socialLinks = {
-  facebook: "https://facebook.com/sgpeople",
-  linkedin: "https://linkedin.com/in/salvatoregarufi",
-  instagram: "https://instagram.com/sgpeople",
-  youtube: "https://youtube.com/sgpeople"
+  facebook: "https://www.facebook.com/sgpeoplegroup",
+  linkedin: "https://www.linkedin.com/company/sg-people/",
+  instagram: "https://www.instagram.com/sg_people_group/",
+  youtube: "https://www.youtube.com/channel/UCPzV6J4CsKBqZZMZk1t12Wg"
 };
 
 // Helper to get webinar date formatted for display
