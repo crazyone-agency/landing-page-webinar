@@ -15,7 +15,7 @@ export default function SpeakerSection() {
               transition={{ duration: 0.5 }}
             >
               <img 
-                src="/salvatore-garufi.png" 
+                src="https://salvatoregarufi.com/wp-content/uploads/2018/06/Salvatore-Garufi_trainer-1280x854.jpg" 
                 alt="Salvatore Garufi" 
                 className="rounded-xl shadow-lg w-full max-w-xs mx-auto"
               />

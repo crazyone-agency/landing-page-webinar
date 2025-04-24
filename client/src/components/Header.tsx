@@ -9,7 +9,7 @@ export default function Header() {
           <Link href="/">
             <div className="flex items-center space-x-2 cursor-pointer">
               <img 
-                src="/sg-people-logo.png" 
+                src="https://sgpeople.it/wp-content/uploads/2024/06/cropped-sg-people-group-ok-01.png" 
                 alt="SG People Logo" 
                 className="h-16 w-auto" 
               />
