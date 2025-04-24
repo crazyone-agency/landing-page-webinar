@@ -57,6 +57,32 @@ export function ActiveCampaignForm({ onRegistrationSuccess, className = "" }: Ac
               
               // Aggiungiamo una classe personalizzata per applicare stili aggiuntivi
               formContainerRef.current?.classList.add('form-loaded');
+              
+              // Modifichiamo il titolo del form
+              const titleElement = formContainerRef.current?.querySelector('._form_3 ._form-title');
+              if (titleElement) {
+                titleElement.textContent = 'RIVOLUZIONE A PICCOLI PASSI';
+              }
+              
+              // Modifichiamo la descrizione
+              const descriptionElement = formContainerRef.current?.querySelector('._form_3 ._html-code p');
+              if (descriptionElement) {
+                descriptionElement.innerHTML = 'Iscriviti al webinar gratuito del 10 maggio 2025<br>Scopri come trasformare la tua vita con micro-azioni quotidiane basate sulla neuroscienza.';
+              }
+              
+              // Modifichiamo il testo del GDPR - cerchiamo in tutti i label
+              const labels = formContainerRef.current?.querySelectorAll('._form_3 label');
+              labels?.forEach(label => {
+                if (label.textContent?.includes('Acconsento')) {
+                  label.innerHTML = 'Acconsento al trattamento dei miei dati personali come da Privacy Policy. I miei dati non saranno ceduti a terzi.';
+                }
+              });
+              
+              // Modifichiamo il testo del pulsante
+              const submitButton = formContainerRef.current?.querySelector('._form_3 ._submit');
+              if (submitButton) {
+                submitButton.textContent = 'RISERVA IL TUO POSTO ORA';
+              }
             }
           }
         }
@@ -80,7 +106,7 @@ export function ActiveCampaignForm({ onRegistrationSuccess, className = "" }: Ac
     <div className={`relative ${className}`}>
       <div 
         ref={formContainerRef} 
-        className="activecampaign-form-container p-4 rounded-lg"
+        className="activecampaign-form-container p-4 rounded-lg shadow-md"
       >
         {/* Il form di ActiveCampaign sarà inserito dinamicamente qui */}
       </div>
