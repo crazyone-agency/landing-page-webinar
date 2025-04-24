@@ -9,10 +9,19 @@ import { OtoActiveCampaignForm } from "@/components/OtoActiveCampaignForm";
 import PriceDisplay from "@/components/PriceDisplay";
 import SpecialOfferCountdown from "@/components/SpecialOfferCountdown";
 import { useToast } from "@/hooks/use-toast";
+import { useEffect } from "react";
+import { WebinarRegistration } from "@shared/schema";
 
 export default function OtoPage() {
   // Controlla se l'offerta è scaduta
   const isOfferExpired = isSpecialOfferExpired();
+  
+  // Setup del redirect a Stripe dopo il form
+  useEffect(() => {
+    if (typeof window.setupStripeRedirect === 'function') {
+      window.setupStripeRedirect('/checkout');
+    }
+  }, []);
   const [_, navigate] = useLocation();
   const { toast } = useToast();
   
