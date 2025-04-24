@@ -51,7 +51,7 @@ export default function HowItWorksSection() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg">Durata</h3>
-                  <p>60 minuti + 15 minuti di Q&A</p>
+                  <p>90 minuti (10:00 - 11:30)</p>
                 </div>
               </div>
               
@@ -122,9 +122,9 @@ export default function HowItWorksSection() {
                 Il tuo primo piccolo passo è registrarti ora. I posti sono limitati, non perdere questa opportunità!
               </p>
               <Link href="#register-now">
-                <a className="inline-block bg-[#F8C112] hover:bg-yellow-500 transition duration-300 text-[#010133] font-bold px-8 py-4 rounded-md text-center shadow-lg">
+                <span className="inline-block bg-[#F8C112] hover:bg-yellow-500 transition duration-300 text-[#010133] font-bold px-8 py-4 rounded-md text-center shadow-lg cursor-pointer">
                   Voglio Partecipare!
-                </a>
+                </span>
               </Link>
             </div>
           </motion.div>
