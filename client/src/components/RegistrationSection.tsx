@@ -1,58 +1,32 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { CalendarCheckIcon, ClockIcon, UserIcon, LockIcon } from "lucide-react";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Button } from "@/components/ui/button";
-import { useRegistration } from "@/hooks/use-registration";
-import { webinarRegistrationSchema, type WebinarRegistration } from "@shared/schema";
+import { type WebinarRegistration } from "@shared/schema";
+import { ActiveCampaignForm } from "@/components/ActiveCampaignForm";
 
 interface RegistrationSectionProps {
   onRegistrationSuccess: (registration: WebinarRegistration) => void;
 }
 
 export default function RegistrationSection({ onRegistrationSuccess }: RegistrationSectionProps) {
-  const { registerToWebinar, isPending } = useRegistration();
-
-  const form = useForm<WebinarRegistration>({
-    resolver: zodResolver(webinarRegistrationSchema),
-    defaultValues: {
-      fullName: "",
-      email: "",
-      phone: "",
-      gdprConsent: false
-    }
-  });
-
-  const onSubmit = async (data: WebinarRegistration) => {
-    try {
-      await registerToWebinar(data);
-      onRegistrationSuccess(data);
-      form.reset();
-    } catch (error) {
-      console.error("Error registering to webinar:", error);
-    }
-  };
-  
   // Aggiungi un listener per l'evento di registrazione dal form di ActiveCampaign
   useEffect(() => {
-    const handleRegistrationSuccess = (event: any) => {
-      const { fullName, email, phone } = event.detail;
-      onRegistrationSuccess({
-        fullName,
-        email,
-        phone,
-        gdprConsent: true
-      });
+    const handleRegistrationSuccess = (event: Event) => {
+      if ((event as CustomEvent).detail?.email) {
+        const { fullName, email, phone } = (event as CustomEvent).detail;
+        onRegistrationSuccess({
+          fullName,
+          email,
+          phone,
+          gdprConsent: true
+        });
+      }
     };
     
-    document.addEventListener('registrationSuccess', handleRegistrationSuccess);
+    document.addEventListener('activecampaign:formSubmitSuccess', handleRegistrationSuccess);
     
     return () => {
-      document.removeEventListener('registrationSuccess', handleRegistrationSuccess);
+      document.removeEventListener('activecampaign:formSubmitSuccess', handleRegistrationSuccess);
     };
   }, [onRegistrationSuccess]);
 
@@ -114,82 +88,11 @@ export default function RegistrationSection({ onRegistrationSuccess }: Registrat
               
               <div className="md:w-1/2 p-8">
                 <div className="relative">
-                  {/* Active Campaign Form che sostituisce il form originale */}
-                  <div id="activecampaign-form-container">
-                    <div style={{ textAlign: "center" }}>
-                      <form method="POST" action="https://salvatoregarufi.activehosted.com/proc.php" id="_form_3_" className="_form _form_3 _inline-form _inline-style " noValidate data-styles-version="5">
-                        <input type="hidden" name="u" value="3" />
-                        <input type="hidden" name="f" value="3" />
-                        <input type="hidden" name="s" />
-                        <input type="hidden" name="c" value="0" />
-                        <input type="hidden" name="m" value="0" />
-                        <input type="hidden" name="act" value="sub" />
-                        <input type="hidden" name="v" value="2" />
-                        <input type="hidden" name="or" value="98b33811b4f1cb49214765981dbd8ccd" />
-                        <div className="_form-content">
-                          <div className="_form_element _x22201078 _inline-style _clear" >
-                            <title className="_form-title">
-                              Rivoluzione a Piccoli Passi - Webinar Gratuito
-                            </title>
-                          </div>
-                          <div className="_form_element _x33944978 _inline-style _clear" >
-                            <div className="_html-code">
-                              <p>
-                                Iscriviti al webinar gratuito del 10 maggio 2025, dalle 10:00 alle 11:30.
-                              </p>
-                            </div>
-                          </div>
-                          <div className="_form_element _x68464455 _inline-style " >
-                            <label htmlFor="fullname" className="_form-label">
-                              Nome Completo<span className="field-required">*</span>
-                            </label>
-                            <div className="_field-wrapper">
-                              <input type="text" id="fullname" name="fullname" placeholder="Digita il nome" required/>
-                            </div>
-                          </div>
-                          <div className="_form_element _x22778913 _inline-style " >
-                            <label htmlFor="email" className="_form-label">
-                              Email<span className="field-required">*</span>
-                            </label>
-                            <div className="_field-wrapper">
-                              <input type="text" id="email" name="email" placeholder="Digita l'email" required/>
-                            </div>
-                          </div>
-                          <div className="_form_element _x65394362 _inline-style " >
-                            <label htmlFor="phone" className="_form-label">
-                              Telefono
-                            </label>
-                            <div className="_field-wrapper">
-                              <input type="text" id="phone" name="phone" placeholder="Digita il numero di telefono" />
-                            </div>
-                          </div>
-                          <div className="_form_element" style={{ margin: "10px 0" }}>
-                            <input type="checkbox" id="gdprConsent" name="field[3]" required style={{ marginRight: "10px" }} />
-                            <label htmlFor="gdprConsent" style={{ fontSize: "0.85rem" }}>
-                              Acconsento al trattamento dei miei dati personali come descritto nella Privacy Policy. I tuoi dati non saranno mai condivisi con terze parti.
-                            </label>
-                          </div>
-                          <div className="_button-wrapper _full_width">
-                            <button id="_form_3_submit" className="_submit" type="submit" 
-                              style={{ 
-                                width: "100%", 
-                                backgroundColor: "#F8C112", 
-                                color: "#010133", 
-                                fontWeight: "bold",
-                                padding: "12px",
-                                borderRadius: "6px",
-                                border: "none",
-                                fontSize: "1rem",
-                                cursor: "pointer"
-                              }}>
-                              Riserva il Mio Posto Ora
-                            </button>
-                          </div>
-                        </div>
-                        <div className="_form-thank-you" style={{ display: "none" }}></div>
-                      </form>
-                    </div>
-                  </div>
+                  {/* Active Campaign Form ufficiale */}
+                  <ActiveCampaignForm 
+                    onRegistrationSuccess={onRegistrationSuccess} 
+                    className="w-full"
+                  />
                 </div>
                 
                 <div className="mt-6 text-center">
