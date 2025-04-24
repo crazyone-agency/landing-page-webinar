@@ -21,8 +21,8 @@ export default function RegistrationSection({ onRegistrationSuccess }: Registrat
     defaultValues: {
       fullName: "",
       email: "",
-      gdprConsent: false,
-      commitmentPledge: false
+      phone: "",
+      gdprConsent: false
     }
   });
 
@@ -134,6 +134,25 @@ export default function RegistrationSection({ onRegistrationSuccess }: Registrat
                     
                     <FormField
                       control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-sm font-medium text-gray-700">Telefono</FormLabel>
+                          <FormControl>
+                            <Input 
+                              type="tel" 
+                              placeholder="Il tuo numero di telefono" 
+                              {...field} 
+                              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#010133] focus:border-transparent"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={form.control}
                       name="gdprConsent"
                       render={({ field }) => (
                         <FormItem className="flex flex-row items-start space-x-3 space-y-0 pt-2">
@@ -147,28 +166,6 @@ export default function RegistrationSection({ onRegistrationSuccess }: Registrat
                           <div className="space-y-1 leading-none">
                             <FormLabel className="text-sm text-gray-600">
                               Acconsento al trattamento dei miei dati personali come descritto nella <a href="#" className="text-[#010133] underline">Privacy Policy</a>. I tuoi dati non saranno mai condivisi con terze parti.
-                            </FormLabel>
-                            <FormMessage />
-                          </div>
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name="commitmentPledge"
-                      render={({ field }) => (
-                        <FormItem className="flex flex-row items-start space-x-3 space-y-0 pt-2">
-                          <FormControl>
-                            <Checkbox 
-                              checked={field.value} 
-                              onCheckedChange={field.onChange} 
-                              className="mr-2 mt-1 h-4 w-4 text-[#010133] focus:ring-[#010133] border-gray-300 rounded"
-                            />
-                          </FormControl>
-                          <div className="space-y-1 leading-none">
-                            <FormLabel className="text-sm text-gray-600">
-                              Mi impegno a partecipare al webinar e a bloccare questo appuntamento sul mio calendario.
                             </FormLabel>
                             <FormMessage />
                           </div>

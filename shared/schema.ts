@@ -14,8 +14,8 @@ export const webinarRegistrations = pgTable("webinar_registrations", {
   id: serial("id").primaryKey(),
   fullName: text("full_name").notNull(),
   email: text("email").notNull(),
+  phone: text("phone").notNull(),
   gdprConsent: boolean("gdpr_consent").notNull().default(false),
-  commitmentPledge: boolean("commitment_pledge").default(false),
   registeredAt: text("registered_at").notNull(),
 });
 
@@ -40,10 +40,10 @@ export const insertUserSchema = createInsertSchema(users).pick({
 export const webinarRegistrationSchema = z.object({
   fullName: z.string().min(3, { message: "Il nome deve contenere almeno 3 caratteri" }),
   email: z.string().email({ message: "Inserisci un indirizzo email valido" }),
+  phone: z.string().min(6, { message: "Inserisci un numero di telefono valido" }),
   gdprConsent: z.boolean().refine((val) => val === true, { 
     message: "Devi accettare la Privacy Policy per procedere" 
   }),
-  commitmentPledge: z.boolean().default(false),
 });
 
 // Course inquiry schema
