@@ -65,9 +65,9 @@ export default function HeroSection() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-6">
               <Link href="#register-now">
-                <a className="bg-[#F8C112] hover:bg-yellow-500 transition duration-300 text-[#010133] font-bold px-6 py-3 rounded-md text-center shadow-lg animate-pulse-slow">
+                <span className="inline-block w-full bg-[#F8C112] hover:bg-yellow-500 transition duration-300 text-[#010133] font-bold px-6 py-3 rounded-md text-center shadow-lg animate-pulse-slow cursor-pointer">
                   Riserva il Tuo Posto Gratuito Ora!
-                </a>
+                </span>
               </Link>
               <div className="flex items-center gap-2 bg-white bg-opacity-10 px-4 py-3 rounded-md">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#F8C112]" viewBox="0 0 20 20" fill="currentColor">

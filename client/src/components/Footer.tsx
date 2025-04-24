@@ -10,10 +10,12 @@ export default function Footer() {
           <div className="md:flex md:justify-between mb-6">
             <div className="mb-6 md:mb-0">
               <div className="flex items-center space-x-2 mb-3">
-                <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-[#010133] font-bold">
-                  SG
-                </div>
-                <span className="font-poppins font-semibold">SG People Group</span>
+                <img 
+                  src="/attached_assets/image_1745495833148.png" 
+                  alt="SG People Logo" 
+                  className="h-10 w-auto" 
+                />
+                <span className="font-medium">SG People Group</span>
               </div>
               <p className="text-sm text-gray-300 max-w-xs">
                 Aiutiamo le persone a realizzare il loro potenziale attraverso strategie pratiche basate su neuroscienze e psicologia.
