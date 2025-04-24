@@ -64,11 +64,11 @@ export default function RegistrationSection({ onRegistrationSuccess }: Registrat
                 <div className="mb-6">
                   <div className="flex items-center mb-3">
                     <CalendarCheckIcon className="text-[#F8C112] mr-3" size={20} />
-                    <span>3 Maggio 2023, ore 18:30</span>
+                    <span>10 Maggio 2025, ore 10:00</span>
                   </div>
                   <div className="flex items-center mb-3">
                     <ClockIcon className="text-[#F8C112] mr-3" size={20} />
-                    <span>60 minuti + 15 minuti di Q&A</span>
+                    <span>90 minuti (10:00 - 11:30)</span>
                   </div>
                   <div className="flex items-center">
                     <UserIcon className="text-[#F8C112] mr-3" size={20} />
