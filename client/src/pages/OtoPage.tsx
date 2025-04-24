@@ -4,9 +4,15 @@ import { ArrowRight, Check, Clock, Download, Gift, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import { cn } from "@/lib/utils";
+import { cn, isSpecialOfferExpired } from "@/lib/utils";
+import { OtoActiveCampaignForm } from "@/components/OtoActiveCampaignForm";
+import PriceDisplay from "@/components/PriceDisplay";
+import SpecialOfferCountdown from "@/components/SpecialOfferCountdown";
 
 export default function OtoPage() {
+  // Controlla se l'offerta è scaduta
+  const isOfferExpired = isSpecialOfferExpired();
+  
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -26,30 +32,18 @@ export default function OtoPage() {
               Sblocca strategie pratiche per trasformare le tue abitudini e massimizzare il tuo potenziale in soli 60 minuti
             </p>
             
-            {/* Price comparison */}
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-6">
-              <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm border border-white/20">
-                <span className="text-gray-300 text-sm line-through">Prezzo Normale:</span>
-                <p className="text-2xl font-bold text-gray-300 line-through">€397</p>
-              </div>
-              <div className="bg-[#F8C112] rounded-lg p-4 border-2 border-white text-[#010133]">
-                <span className="text-sm font-medium">Prezzo Esclusivo:</span>
-                <p className="text-3xl font-bold">€37</p>
-              </div>
+            {/* Countdown Timer */}
+            <div className="mb-6">
+              <SpecialOfferCountdown />
             </div>
             
-            {/* CTA Button */}
-            <Button 
-              size="lg" 
-              className="bg-[#F8C112] hover:bg-yellow-400 text-[#010133] font-bold text-lg px-8 py-6 rounded-md"
-            >
-              ACQUISTA ORA A SOLI €37 <ArrowRight className="ml-2" />
-            </Button>
+            {/* Price display */}
+            <PriceDisplay type="offer" className="mb-6" />
             
-            <p className="mt-4 text-sm text-gray-300">
-              <Clock className="inline-block mr-1 h-4 w-4" />
-              Offerta valida solo per 60 minuti dopo il webinar "Rivoluzione a piccoli passi"
-            </p>
+            {/* ActiveCampaign Form */}
+            <div className="max-w-xl mx-auto">
+              <OtoActiveCampaignForm />
+            </div>
           </div>
           
           {/* Highlights */}
@@ -130,16 +124,20 @@ export default function OtoPage() {
           </div>
           
           <div className="mt-12 text-center">
-            <Button 
-              size="lg" 
-              className="bg-[#F8C112] hover:bg-yellow-400 text-[#010133] font-bold text-lg px-8 py-6 rounded-md"
-            >
-              ACQUISTA ORA A SOLI €37 <ArrowRight className="ml-2" />
-            </Button>
-            <p className="mt-4 text-sm text-gray-500">
-              <Clock className="inline-block mr-1 h-4 w-4" /> 
-              Offerta valida solo per 60 minuti dopo il webinar
-            </p>
+            {/* Price display */}
+            <PriceDisplay type="offer" className="mb-6" />
+            
+            {isOfferExpired ? (
+              <p className="mt-4 text-sm text-gray-500">
+                <Clock className="inline-block mr-1 h-4 w-4" /> 
+                L'offerta speciale è scaduta. Prezzo attuale: €397
+              </p>
+            ) : (
+              <p className="mt-4 text-sm text-gray-500">
+                <Clock className="inline-block mr-1 h-4 w-4" /> 
+                Offerta valida solo per 60 minuti dopo il webinar
+              </p>
+            )}
           </div>
         </div>
       </section>
@@ -160,18 +158,7 @@ export default function OtoPage() {
               </p>
             </div>
             
-            <div className="flex flex-col md:flex-row justify-center items-center gap-6 mb-8">
-              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg border border-white/20 text-center">
-                <span className="text-gray-300 text-sm line-through">Prezzo Normale:</span>
-                <p className="text-3xl font-bold text-gray-300 line-through">€8,000</p>
-              </div>
-              <div className="text-4xl font-bold text-[#F8C112]">→</div>
-              <div className="bg-[#F8C112] rounded-lg p-6 border-2 border-white text-[#010133] text-center">
-                <span className="text-sm font-medium">Prezzo Esclusivo:</span>
-                <p className="text-3xl font-bold">€4,000</p>
-                <p className="text-sm mt-1">Solo per chi acquista lo Sprint</p>
-              </div>
-            </div>
+            <PriceDisplay type="course" />
             
             <div className="text-center">
               <Link href="/corso-sviluppo-personale">
@@ -246,34 +233,21 @@ export default function OtoPage() {
           </p>
           
           <div className="mb-8">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-6">
-              <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm border border-white/20">
-                <span className="text-gray-300 text-sm line-through">Prezzo Normale:</span>
-                <p className="text-2xl font-bold text-gray-300 line-through">€397</p>
-              </div>
-              <div className="bg-[#F8C112] rounded-lg p-4 border-2 border-white text-[#010133]">
-                <span className="text-sm font-medium">Prezzo Esclusivo:</span>
-                <p className="text-3xl font-bold">€37</p>
-              </div>
+            {/* Special Offer Countdown */}
+            <div className="mb-6">
+              <SpecialOfferCountdown />
             </div>
             
-            <Button 
-              size="lg" 
-              className={cn(
-                "bg-[#F8C112] hover:bg-yellow-400 text-[#010133]", 
-                "font-bold text-lg px-8 py-6 rounded-md animate-pulse"
-              )}
-            >
-              ACQUISTA ORA <ArrowRight className="ml-2" />
-            </Button>
+            {/* Price display */}
+            <PriceDisplay type="offer" className="mb-6" />
             
-            <p className="mt-4 text-sm text-gray-300">
-              <Clock className="inline-block mr-1 h-4 w-4" /> 
-              Offerta valida solo per 60 minuti dopo il webinar
-            </p>
+            {/* ActiveCampaign Form */}
+            <div className="max-w-xl mx-auto">
+              <OtoActiveCampaignForm />
+            </div>
           </div>
           
-          <div className="text-sm text-gray-300 max-w-xl mx-auto">
+          <div className="text-sm text-gray-300 max-w-xl mx-auto mt-6">
             <p>
               Acquistando ora, riceverai l'accesso immediato allo Smart Revolution Sprint e
               al bonus esclusivo: uno sconto del 50% sul percorso formativo completo.

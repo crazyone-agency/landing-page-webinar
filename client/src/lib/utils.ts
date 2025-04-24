@@ -1,6 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { format, addDays } from "date-fns";
+import { format, addDays, addHours } from "date-fns";
 import { it } from "date-fns/locale";
 
 export function cn(...inputs: ClassValue[]) {
@@ -25,6 +25,12 @@ export const brandColors = {
 export const webinarDate = new Date(2025, 4, 10, 10, 0); // May 10th, 2025 at 10:00
 export const webinarEndDate = new Date(2025, 4, 10, 11, 30); // May 10th, 2025 at 11:30
 
+// Offerta speciale: 1 ora dopo la fine del webinar
+export const offerEndDate = addHours(webinarEndDate, 1); // 1 ora dopo la fine del webinar (11:30 + 1h)
+
+// Corso special offer: 48 ore dopo la fine del webinar
+export const courseOfferEndDate = addHours(webinarEndDate, 48); // 48 ore dopo la fine del webinar (11:30 + 48h)
+
 // Social media links
 export const socialLinks = {
   facebook: "https://facebook.com/sgpeople",
@@ -47,6 +53,16 @@ export function getWebinarDuration(): string {
   const durationMs = webinarEndDate.getTime() - webinarDate.getTime();
   const durationMinutes = Math.floor(durationMs / (1000 * 60));
   return `${durationMinutes} minuti`;
+}
+
+// Verifica se l'offerta speciale è scaduta
+export function isSpecialOfferExpired(): boolean {
+  return new Date() > offerEndDate;
+}
+
+// Verifica se l'offerta del corso è scaduta
+export function isCourseOfferExpired(): boolean {
+  return new Date() > courseOfferEndDate;
 }
 
 // Helper to validate email format
