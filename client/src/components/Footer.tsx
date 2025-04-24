@@ -43,13 +43,13 @@ export default function Footer() {
             <p>&copy; {new Date().getFullYear()} SG People Group. Tutti i diritti riservati.</p>
             <div className="mt-2 space-x-4">
               <Link href="#privacy">
-                <a className="hover:text-white transition-colors">Privacy Policy</a>
+                <span className="hover:text-white transition-colors cursor-pointer">Privacy Policy</span>
               </Link>
               <Link href="#terms">
-                <a className="hover:text-white transition-colors">Termini e Condizioni</a>
+                <span className="hover:text-white transition-colors cursor-pointer">Termini e Condizioni</span>
               </Link>
               <Link href="#contact">
-                <a className="hover:text-white transition-colors">Contatti</a>
+                <span className="hover:text-white transition-colors cursor-pointer">Contatti</span>
               </Link>
             </div>
           </div>

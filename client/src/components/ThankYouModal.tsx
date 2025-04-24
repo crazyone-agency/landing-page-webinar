@@ -1,7 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, X } from "lucide-react";
+import { Check, X, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { addEventToCalendar } from "@/lib/calendar";
+import { Link } from "wouter";
 
 interface ThankYouModalProps {
   email: string;
@@ -12,6 +13,10 @@ export default function ThankYouModal({ email, onClose }: ThankYouModalProps) {
   const handleAddToCalendar = () => {
     addEventToCalendar();
   };
+  
+  // Simuliamo che il webinar è già avvenuto se oggi è dopo il 10 maggio 2025
+  const webinarDate = new Date(2025, 4, 10, 11, 30); // 10 maggio 2025, 11:30
+  const isAfterWebinar = new Date() > webinarDate;
 
   return (
     <AnimatePresence>
@@ -39,28 +44,44 @@ export default function ThankYouModal({ email, onClose }: ThankYouModalProps) {
               Abbiamo inviato un'email di conferma a{" "}
               <span className="font-semibold">{email}</span> con i dettagli del webinar e il link per partecipare.
             </p>
-            <div className="mb-6">
-              <button
-                onClick={handleAddToCalendar}
-                className="text-[#010133] font-semibold flex items-center justify-center mx-auto"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 mr-2"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+            
+            {isAfterWebinar ? (
+              <div className="mb-6 bg-[#010133] text-white p-4 rounded-lg">
+                <h4 className="font-semibold text-lg mb-2">Offerta Speciale</h4>
+                <p className="mb-3">
+                  Il webinar è terminato, ma puoi ancora accedere allo Smart Revolution Sprint a un prezzo esclusivo!
+                </p>
+                <Link href="/offerta-speciale">
+                  <span className="inline-block bg-[#F8C112] text-[#010133] font-bold px-5 py-2 rounded cursor-pointer">
+                    Scopri l'Offerta <ArrowRight className="inline ml-1" size={16} />
+                  </span>
+                </Link>
+              </div>
+            ) : (
+              <div className="mb-6">
+                <button
+                  onClick={handleAddToCalendar}
+                  className="text-[#010133] font-semibold flex items-center justify-center mx-auto"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                  />
-                </svg>
-                Aggiungi al calendario
-              </button>
-            </div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5 mr-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                    />
+                  </svg>
+                  Aggiungi al calendario
+                </button>
+              </div>
+            )}
+            
             <Button
               onClick={onClose}
               className="bg-[#010133] hover:bg-opacity-90 transition duration-300 text-white font-semibold px-6 py-2 rounded-md"
