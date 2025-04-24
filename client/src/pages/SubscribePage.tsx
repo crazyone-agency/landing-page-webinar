@@ -124,20 +124,34 @@ export default function SubscribePage() {
             transition={{ duration: 0.6 }}
             className="bg-white p-6 md:p-8 rounded-xl shadow-lg"
           >
-            <h1 className="text-2xl md:text-3xl font-bold text-[#010133] mb-4 text-center">
-              Completa la tua iscrizione
-            </h1>
+            <div className="text-center mb-4">
+              <img 
+                src="https://sgpeople.it/wp-content/uploads/2024/06/cropped-sg-people-group-ok-01.png" 
+                alt="SG People Logo" 
+                className="h-14 w-auto mx-auto mb-4" 
+              />
+              <h1 className="text-2xl md:text-3xl font-bold text-[#010133] mb-1">
+                Completa la tua iscrizione
+              </h1>
+              <p className="text-gray-500">Manca solo un ultimo passaggio</p>
+            </div>
             
-            <div className="border-b border-gray-200 mb-6 pb-6">
+            <div className="border bg-gray-50 rounded-lg p-4 mb-6">
               <div className="flex justify-between items-center mb-2">
-                <h2 className="text-lg font-medium">Percorso Formativo in Sviluppo Personale</h2>
-                <span className="font-bold text-lg">€{amount}</span>
+                <h2 className="text-lg font-semibold text-[#010133]">Percorso Formativo in Sviluppo Personale</h2>
+                <span className="font-bold text-lg text-[#010133]">€{amount}</span>
               </div>
               <p className="text-gray-600 text-sm">
                 {isExpired 
                   ? "Percorso completo con Salvatore Garufi" 
-                  : "Percorso completo con Salvatore Garufi (Sconto 50%)"}
+                  : "Percorso completo con Salvatore Garufi"}
               </p>
+              
+              {!isExpired && (
+                <div className="mt-2 bg-green-50 text-green-700 px-3 py-1 rounded-md text-xs inline-block">
+                  Sconto 50% 
+                </div>
+              )}
             </div>
             
             {isLoading ? (
@@ -155,8 +169,18 @@ export default function SubscribePage() {
             )}
             
             <div className="mt-6 text-center text-sm text-gray-500">
-              <p>I pagamenti sono gestiti in modo sicuro da Stripe</p>
-              <p className="mt-2">
+              <p className="flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                I pagamenti sono gestiti in modo sicuro da Stripe
+              </p>
+              <div className="flex justify-center mt-3 space-x-2">
+                <img src="https://cdn.jsdelivr.net/gh/Sooova/Payment-Logos/Rounded/Visa.svg" alt="Visa" className="h-6" />
+                <img src="https://cdn.jsdelivr.net/gh/Sooova/Payment-Logos/Rounded/Mastercard.svg" alt="Mastercard" className="h-6" />
+                <img src="https://cdn.jsdelivr.net/gh/Sooova/Payment-Logos/Rounded/AMEX.svg" alt="American Express" className="h-6" />
+              </div>
+              <p className="mt-4">
                 Proseguendo, accetti i nostri <a href="#" className="text-blue-600 hover:underline">Termini e Condizioni</a> e la nostra <a href="#" className="text-blue-600 hover:underline">Privacy Policy</a>
               </p>
             </div>

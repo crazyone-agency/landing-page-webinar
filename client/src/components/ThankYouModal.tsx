@@ -58,27 +58,40 @@ export default function ThankYouModal({ email, onClose }: ThankYouModalProps) {
                 </Link>
               </div>
             ) : (
-              <div className="mb-6">
-                <button
-                  onClick={handleAddToCalendar}
-                  className="text-[#010133] font-semibold flex items-center justify-center mx-auto"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 mr-2"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                    />
-                  </svg>
-                  Aggiungi al calendario
-                </button>
+              <div className="mb-6 text-center">
+                <div className="bg-blue-50 p-4 rounded-lg mb-4">
+                  <p className="text-blue-700 text-sm mb-2">
+                    Aggiungi il webinar al tuo calendario per non perderlo!
+                  </p>
+                  <div className="flex justify-center space-x-2">
+                    <button
+                      onClick={handleAddToCalendar}
+                      className="bg-[#F8C112] hover:bg-yellow-500 text-[#010133] font-semibold px-4 py-2 rounded-md flex items-center"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5 mr-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                        />
+                      </svg>
+                      Scarica il file ICS
+                    </button>
+                  </div>
+                </div>
+                
+                <div className="mt-3 text-gray-600 text-sm">
+                  <p><strong>Link Zoom:</strong> https://us06web.zoom.us/j/86248568208</p>
+                  <p><strong>ID riunione:</strong> 862 4856 8208</p>
+                  <p><strong>Passcode:</strong> 559597</p>
+                </div>
               </div>
             )}
             
