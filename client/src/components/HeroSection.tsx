@@ -54,7 +54,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8 }}
           >
             <span className="inline-block bg-[#F8C112] text-[#010133] text-xs font-bold px-3 py-1 rounded-full mb-4">
-              WEBINAR GRATUITO | 3 MAGGIO
+              WEBINAR GRATUITO | 10 MAGGIO
             </span>
             <h1 className="font-poppins font-bold text-3xl md:text-4xl lg:text-5xl leading-tight mb-4">
               Trasforma la tua Routine (e i tuoi Risultati) con{" "}
@@ -102,7 +102,7 @@ export default function HeroSection() {
             <div className="relative">
               <div className="absolute -inset-1 bg-[#F8C112] rounded-lg blur-sm"></div>
               <img 
-                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                src="/speaker.jpg" 
                 alt="Salvatore Garufi - Professional Speaker" 
                 className="relative rounded-lg w-full max-w-md mx-auto shadow-xl"
               />

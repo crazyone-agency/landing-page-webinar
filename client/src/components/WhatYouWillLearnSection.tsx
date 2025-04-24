@@ -120,9 +120,9 @@ export default function WhatYouWillLearnSection() {
             transition={{ duration: 0.5, delay: 0.6 }}
           >
             <Link href="#register-now">
-              <a className="inline-block bg-[#010133] hover:bg-opacity-90 transition duration-300 text-white font-bold px-8 py-4 rounded-md text-center shadow-md">
+              <span className="inline-block bg-[#010133] hover:bg-opacity-90 transition duration-300 text-white font-bold px-8 py-4 rounded-md text-center shadow-md cursor-pointer">
                 Partecipa al Webinar Gratuito
-              </a>
+              </span>
             </Link>
           </motion.div>
         </div>
