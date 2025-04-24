@@ -1,124 +1,161 @@
-import { useEffect, useRef } from 'react';
-import { WebinarRegistration } from '@shared/schema';
+import { useEffect, useRef, useState } from 'react';
+import ThankYouModal from '@/components/ThankYouModal';
+import { Button } from '@/components/ui/button';
+import { addEventToCalendar } from '@/lib/calendar';
+import '@/styles/activecampaign-form.css';
 
 interface ActiveCampaignFormProps {
-  onRegistrationSuccess: (registration: WebinarRegistration) => void;
+  id?: string;
+  onRegistrationSuccess?: (data: any) => void;
   className?: string;
 }
 
-export function ActiveCampaignForm({ onRegistrationSuccess, className = "" }: ActiveCampaignFormProps) {
+export default function ActiveCampaignForm({ id = "registration-form" }: ActiveCampaignFormProps) {
   const formContainerRef = useRef<HTMLDivElement>(null);
+  const [showThankYou, setShowThankYou] = useState(false);
+  const [userEmail, setUserEmail] = useState('');
+  const formRef = useRef<HTMLFormElement | null>(null);
 
+  // Inserisci il form di ActiveCampaign nel DOM
   useEffect(() => {
-    // Aggiungiamo l'integrazione ufficiale di ActiveCampaign
     if (formContainerRef.current) {
-      // Puliamo eventuali form precedenti
-      formContainerRef.current.innerHTML = '';
-      
-      // Creiamo un div con la classe "_form_3" richiesta da ActiveCampaign
-      const formContainer = document.createElement('div');
-      formContainer.className = '_form_3';
-      formContainerRef.current.appendChild(formContainer);
-      
-      // Aggiungiamo lo script di ActiveCampaign
-      const script = document.createElement('script');
-      script.src = 'https://salvatoregarufi.activehosted.com/f/embed.php?id=3';
-      script.charset = 'utf-8';
-      formContainerRef.current.appendChild(script);
-      
-      // Aggiungiamo un listener per l'evento di successo
-      const handleSuccess = (event: Event) => {
-        if ((event as CustomEvent).detail?.email) {
-          const data = (event as CustomEvent).detail;
-          // Convertiamo i dati nel formato WebinarRegistration
-          const registration: WebinarRegistration = {
-            fullName: data.fullName || '',
-            email: data.email || '',
-            phone: data.phone || '',
-            gdprConsent: true
-          };
-          
-          // Chiamiamo il callback di successo
-          onRegistrationSuccess(registration);
-        }
-      };
-      
-      // Aggiungiamo l'evento personalizzato per il successo del form
-      document.addEventListener('activecampaign:formSubmitSuccess', handleSuccess);
-      
-      // Osserviamo il DOM per rilevare quando il form è completamente caricato
-      const observer = new MutationObserver((mutations) => {
-        for (const mutation of mutations) {
-          if (mutation.type === 'childList') {
-            const formElements = formContainerRef.current?.querySelectorAll('._form_3 ._form-content');
-            if (formElements && formElements.length > 0) {
-              // Il form è stato caricato, possiamo fermare l'observer
-              observer.disconnect();
-              
-              // Aggiungiamo una classe personalizzata per applicare stili aggiuntivi
-              formContainerRef.current?.classList.add('form-loaded');
-              
-              // Modifichiamo il titolo del form
-              const titleElement = formContainerRef.current?.querySelector('._form_3 ._form-title');
-              if (titleElement) {
-                titleElement.textContent = 'RIVOLUZIONE A PICCOLI PASSI';
-              }
-              
-              // Modifichiamo la descrizione
-              const descriptionElement = formContainerRef.current?.querySelector('._form_3 ._html-code p');
-              if (descriptionElement) {
-                descriptionElement.innerHTML = 'Iscriviti al webinar gratuito del 10 maggio 2025<br>Scopri come trasformare la tua vita con micro-azioni quotidiane basate sulla neuroscienza.';
-              }
-              
-              // Modifichiamo il testo del GDPR - cerchiamo in tutti i label
-              const labels = formContainerRef.current?.querySelectorAll('._form_3 label');
-              labels?.forEach(label => {
-                if (label.textContent?.includes('Acconsento')) {
-                  label.innerHTML = 'Acconsento al trattamento dei miei dati personali come da Privacy Policy. I miei dati non saranno ceduti a terzi.';
-                }
-              });
-              
-              // Modifichiamo il testo del pulsante
-              const submitButton = formContainerRef.current?.querySelector('._form_3 ._submit');
-              if (submitButton) {
-                submitButton.textContent = 'RISERVA IL TUO POSTO ORA';
-              }
-            }
-          }
-        }
-      });
-      
-      // Avviamo l'osservazione
-      observer.observe(formContainerRef.current, { childList: true, subtree: true });
-      
-      // Cleanup
-      return () => {
-        document.removeEventListener('activecampaign:formSubmitSuccess', handleSuccess);
-        observer.disconnect();
-        if (formContainerRef.current) {
-          formContainerRef.current.innerHTML = '';
-        }
-      };
+      formContainerRef.current.innerHTML = `
+<div style="text-align: center;">
+  <form method="POST" action="https://salvatoregarufi.activehosted.com/proc.php" id="_form_5_" class="_form _form_5 _inline-form _inline-style " novalidate data-styles-version="5">
+    <input type="hidden" name="u" value="5" />
+    <input type="hidden" name="f" value="5" />
+    <input type="hidden" name="s" />
+    <input type="hidden" name="c" value="0" />
+    <input type="hidden" name="m" value="0" />
+    <input type="hidden" name="act" value="sub" />
+    <input type="hidden" name="v" value="2" />
+    <input type="hidden" name="or" value="d9f6ea6be36d0a63fd73220fd6d1d029" />
+    <div class="_form-content">
+      <div class="_form_element _x22201078 _inline-style _clear" >
+        <title class="_form-title">
+          Partecipa al webinar in regalo per te
+        </title>
+      </div>
+      <div class="_form_element _x33944978 _inline-style _clear" >
+        <div class="_html-code">
+          <p>
+          </p>
+        </div>
+      </div>
+      <div class="_form_element _x68464455 _inline-style " >
+        <label for="fullname" class="_form-label">
+          Nome Completo<span class="field-required">
+          *
+        </span>
+      </label>
+      <div class="_field-wrapper">
+        <input type="text" id="fullname" name="fullname" placeholder="Digita il nome" required/>
+      </div>
+    </div>
+    <div class="_form_element _x22778913 _inline-style " >
+      <label for="email" class="_form-label">
+        Email<span class="field-required">
+        *
+      </span>
+    </label>
+    <div class="_field-wrapper">
+      <input type="text" id="email" name="email" placeholder="Digita l&#039;email" required/>
+    </div>
+  </div>
+  <div class="_form_element _x65394362 _inline-style " >
+    <label for="phone" class="_form-label">
+      Telefono
+    </label>
+    <div class="_field-wrapper">
+      <input type="text" id="phone" name="phone" placeholder="Digita il numero di telefono" />
+    </div>
+  </div>
+  <div class="_button-wrapper _inline-style">
+    <button id="_form_5_submit" class="_submit" type="submit">
+      Invia
+    </button>
+  </div>
+  <div class="_clear-element">
+  </div>
+</div>
+<div class="_form-thank-you" style="display:none;">
+</div>
+</form>
+</div>`;
+
+      // Recupera il form dopo che è stato inserito nel DOM
+      formRef.current = document.getElementById('_form_5_') as HTMLFormElement;
+
+      // Aggiungi l'event listener per l'invio del form
+      if (formRef.current) {
+        formRef.current.addEventListener('submit', handleFormSubmit);
+      }
     }
-  }, [onRegistrationSuccess]);
+
+    // Pulizia all'unmount
+    return () => {
+      if (formRef.current) {
+        formRef.current.removeEventListener('submit', handleFormSubmit);
+      }
+    };
+  }, []);
+
+  const handleFormSubmit = (e: Event) => {
+    e.preventDefault();
+    
+    if (!formRef.current) return;
+    
+    const submitButton = formRef.current.querySelector('button[type="submit"]');
+    if (submitButton) {
+      submitButton.setAttribute('disabled', 'true');
+      submitButton.classList.add('processing');
+    }
+
+    // Recupera i dati dal form
+    const formData = new FormData(formRef.current);
+    const email = formData.get('email') as string;
+    
+    // Salva l'email per il modale di ringraziamento
+    setUserEmail(email);
+    
+    // Invia i dati a ActiveCampaign
+    fetch('https://salvatoregarufi.activehosted.com/proc.php', {
+      method: 'POST',
+      body: formData,
+      mode: 'no-cors'
+    })
+    .then(() => {
+      // Mostra il modale di ringraziamento
+      setShowThankYou(true);
+      
+      // Reimposta il form
+      formRef.current?.reset();
+    })
+    .catch(error => {
+      console.error('Errore invio form:', error);
+      alert('Si è verificato un errore. Riprova più tardi.');
+      
+      if (submitButton) {
+        submitButton.removeAttribute('disabled');
+        submitButton.classList.remove('processing');
+      }
+    });
+  };
+
+  const handleCloseModal = () => {
+    setShowThankYou(false);
+  };
 
   return (
-    <div className={`relative ${className}`}>
+    <div id={id} className="mb-10">
       <div 
         ref={formContainerRef} 
-        className="activecampaign-form-container p-4 rounded-lg shadow-md"
-      >
-        {/* Il form di ActiveCampaign sarà inserito dinamicamente qui */}
-      </div>
+        className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md"
+      ></div>
       
-      <div className="mt-2 text-center">
-        <p className="text-sm text-gray-500">
-          <svg xmlns="http://www.w3.org/2000/svg" className="inline-block h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-          </svg> 
-          I tuoi dati sono al sicuro. Non facciamo spam.
-        </p>
-      </div>
+      {showThankYou && (
+        <ThankYouModal email={userEmail} onClose={handleCloseModal} />
+      )}
     </div>
   );
 }

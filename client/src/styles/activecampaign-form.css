@@ -1,0 +1,152 @@
+/* ActiveCampaign form styling */
+@import url(https://fonts.bunny.net/css?family=ibm-plex-sans:400,700|IBM+Plex+Sans:400);
+
+#_form_5_{
+  font-size:14px;
+  line-height:1.6;
+  font-family:arial, helvetica, sans-serif;
+  margin:0;
+}
+
+#_form_5_ *{
+  outline:0;
+}
+
+._form_hide{
+  display:none;
+  visibility:hidden;
+}
+
+._form_show{
+  display:block;
+  visibility:visible;
+}
+
+#_form_5_._form-top{
+  top:0;
+}
+
+#_form_5_._form-bottom{
+  bottom:0;
+}
+
+#_form_5_._form-left{
+  left:0;
+}
+
+#_form_5_._form-right{
+  right:0;
+}
+
+#_form_5_ input[type="text"],
+#_form_5_ input[type="tel"],
+#_form_5_ input[type="date"],
+#_form_5_ textarea{
+  padding:6px;
+  height:auto;
+  border:#979797 1px solid;
+  border-radius:4px;
+  color:#000 !important;
+  font-size:13px;
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  box-sizing:border-box;
+  width:100%;
+}
+
+#_form_5_ textarea{
+  resize:none;
+}
+
+#_form_5_ ._submit{
+  -webkit-appearance:none;
+  cursor:pointer;
+  font-family:arial, sans-serif;
+  font-size:14px;
+  text-align:center;
+  background:#F8C112 !important;
+  border:0 !important;
+  color:#010133 !important;
+  padding:10px !important;
+  font-weight: bold;
+  border-radius:4px;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+#_form_5_ ._submit:hover {
+  background:#e0ad0f !important;
+}
+
+#_form_5_ ._form-title{
+  font-size:18px;
+  font-weight:bold;
+  margin-bottom:10px;
+  color:#010133;
+  text-align: center;
+  display: block;
+}
+
+#_form_5_ ._form-label{
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+  font-size: 13px;
+}
+
+#_form_5_ ._form_element{
+  margin-bottom:15px;
+}
+
+#_form_5_ ._form-thank-you{
+  margin-top: 15px;
+  padding: 15px;
+  text-align: center;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+}
+
+#_form_5_ .field-required {
+  color: #F8C112;
+  margin-left: 3px;
+}
+
+#_form_5_ ._field-wrapper {
+  position: relative;
+}
+
+._error-inner {
+  color: #ff0000;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* Media queries per la responsività */
+@media all and (min-width:320px) and (max-width:667px){
+  #_form_5_ ._form-title {
+    font-size: 16px;
+  }
+}
+
+/* Nascondere il branding di ActiveCampaign */
+#_form_5_ ._form-branding {
+  display: none !important;
+}
+
+/* Stilizzazione per l'elemento di consenso SMS */
+.sms_consent_checkbox {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  font-size: 12px;
+}
+
+.sms_consent_checkbox input[type="checkbox"] {
+  margin-top: 3px;
+  margin-right: 8px;
+}
+
+.sms_consent_message {
+  color: #666;
+  line-height: 1.4;
+}

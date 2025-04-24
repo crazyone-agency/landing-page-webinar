@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { CalendarCheckIcon, ClockIcon, UserIcon, LockIcon } from "lucide-react";
 import { type WebinarRegistration } from "@shared/schema";
-import { ActiveCampaignForm } from "@/components/ActiveCampaignForm";
+import ActiveCampaignForm from "@/components/ActiveCampaignForm";
 
 interface RegistrationSectionProps {
   onRegistrationSuccess: (registration: WebinarRegistration) => void;
