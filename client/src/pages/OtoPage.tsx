@@ -4,9 +4,14 @@ import { ArrowRight, Check, Clock, Download, Gift, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import { cn } from "@/lib/utils";
+import {cn, webinarEndDate} from "@/lib/utils";
 
 export default function OtoPage() {
+  const today = new Date();
+  const endOffer = new Date(webinarEndDate.getTime());
+  endOffer.setHours(endOffer.getHours() + 1);
+  const isOffer = today >= webinarEndDate && today < endOffer;
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -15,9 +20,11 @@ export default function OtoPage() {
       <section className="relative bg-[#010133] text-white pt-24 pb-16 px-4">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-8">
+            {isOffer &&
             <div className="inline-block bg-red-600 text-white px-4 py-1 rounded-full text-sm font-semibold mb-4">
               OFFERTA SPECIALE A TEMPO LIMITATO
             </div>
+            }
             <h1 className="text-3xl md:text-5xl font-bold mb-4">
               <span className="text-[#F8C112]">Smart Revolution Sprint</span>
               <br />Un Esclusivo Workshop di 60 Minuti con Salvatore Garufi
@@ -27,29 +34,40 @@ export default function OtoPage() {
             </p>
             
             {/* Price comparison */}
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-6">
-              <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm border border-white/20">
-                <span className="text-gray-300 text-sm line-through">Prezzo Normale:</span>
-                <p className="text-2xl font-bold text-gray-300 line-through">€397</p>
-              </div>
-              <div className="bg-[#F8C112] rounded-lg p-4 border-2 border-white text-[#010133]">
-                <span className="text-sm font-medium">Prezzo Esclusivo:</span>
-                <p className="text-3xl font-bold">€37</p>
-              </div>
-            </div>
+            {isOffer ? (
+                <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-6">
+                  <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm border border-white/20">
+                    <span className="text-gray-300 text-sm line-through">Prezzo Normale:</span>
+                    <p className="text-2xl font-bold text-gray-300 line-through">€397</p>
+                  </div>
+                  <div className="bg-[#F8C112] rounded-lg p-4 border-2 border-white text-[#010133]">
+                    <span className="text-sm font-medium">Prezzo Esclusivo:</span>
+                    <p className="text-3xl font-bold">€37</p>
+                  </div>
+                </div>
+            ) : (
+                <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-6">
+                  <div className="bg-[#F8C112] rounded-lg p-4 border-2 border-white text-[#010133]">
+                    <span className="text-sm font-medium">Prezzo Esclusivo</span>
+                    <p className="text-3xl font-bold">€397</p>
+                  </div>
+                </div>
+            )}
             
             {/* CTA Button */}
             <Button 
               size="lg" 
               className="bg-[#F8C112] hover:bg-yellow-400 text-[#010133] font-bold text-lg px-8 py-6 rounded-md"
             >
-              ACQUISTA ORA A SOLI €37 <ArrowRight className="ml-2" />
+              ACQUISTA ORA A SOLI €{isOffer ? 37 : 397} <ArrowRight className="ml-2" />
             </Button>
-            
+
+            {isOffer &&
             <p className="mt-4 text-sm text-gray-300">
               <Clock className="inline-block mr-1 h-4 w-4" />
               Offerta valida solo per 60 minuti dopo il webinar "Rivoluzione a piccoli passi"
             </p>
+            }
           </div>
           
           {/* Highlights */}
@@ -134,12 +152,14 @@ export default function OtoPage() {
               size="lg" 
               className="bg-[#F8C112] hover:bg-yellow-400 text-[#010133] font-bold text-lg px-8 py-6 rounded-md"
             >
-              ACQUISTA ORA A SOLI €37 <ArrowRight className="ml-2" />
+              ACQUISTA ORA A SOLI €{isOffer ? 37 : 397} <ArrowRight className="ml-2" />
             </Button>
-            <p className="mt-4 text-sm text-gray-500">
-              <Clock className="inline-block mr-1 h-4 w-4" /> 
-              Offerta valida solo per 60 minuti dopo il webinar
-            </p>
+            {isOffer &&
+                <p className="mt-4 text-sm text-gray-300">
+                  <Clock className="inline-block mr-1 h-4 w-4" />
+                  Offerta valida solo per 60 minuti dopo il webinar "Rivoluzione a piccoli passi"
+                </p>
+            }
           </div>
         </div>
       </section>
@@ -246,17 +266,26 @@ export default function OtoPage() {
           </p>
           
           <div className="mb-8">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-6">
-              <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm border border-white/20">
-                <span className="text-gray-300 text-sm line-through">Prezzo Normale:</span>
-                <p className="text-2xl font-bold text-gray-300 line-through">€397</p>
-              </div>
-              <div className="bg-[#F8C112] rounded-lg p-4 border-2 border-white text-[#010133]">
-                <span className="text-sm font-medium">Prezzo Esclusivo:</span>
-                <p className="text-3xl font-bold">€37</p>
-              </div>
-            </div>
-            
+            {isOffer ? (
+                <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-6">
+                  <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm border border-white/20">
+                    <span className="text-gray-300 text-sm line-through">Prezzo Normale:</span>
+                    <p className="text-2xl font-bold text-gray-300 line-through">€397</p>
+                  </div>
+                  <div className="bg-[#F8C112] rounded-lg p-4 border-2 border-white text-[#010133]">
+                    <span className="text-sm font-medium">Prezzo Esclusivo:</span>
+                    <p className="text-3xl font-bold">€37</p>
+                  </div>
+                </div>
+            ) : (
+                <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-6">
+                  <div className="bg-[#F8C112] rounded-lg p-4 border-2 border-white text-[#010133]">
+                    <span className="text-sm font-medium">Prezzo Esclusivo</span>
+                    <p className="text-3xl font-bold">€397</p>
+                  </div>
+                </div>
+            )}
+
             <Button 
               size="lg" 
               className={cn(
@@ -266,11 +295,13 @@ export default function OtoPage() {
             >
               ACQUISTA ORA <ArrowRight className="ml-2" />
             </Button>
-            
-            <p className="mt-4 text-sm text-gray-300">
-              <Clock className="inline-block mr-1 h-4 w-4" /> 
-              Offerta valida solo per 60 minuti dopo il webinar
-            </p>
+
+            {isOffer &&
+                <p className="mt-4 text-sm text-gray-300">
+                  <Clock className="inline-block mr-1 h-4 w-4" />
+                  Offerta valida solo per 60 minuti dopo il webinar "Rivoluzione a piccoli passi"
+                </p>
+            }
           </div>
           
           <div className="text-sm text-gray-300 max-w-xl mx-auto">

@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { brandColors } from "@/lib/course-utils";
 import OfferCountdown from "./OfferCountdown";
+import {webinarEndDate} from "@/lib/utils.ts";
 
 export default function ExclusiveOfferHero() {
   const scrollToInquiry = () => {
@@ -10,6 +11,11 @@ export default function ExclusiveOfferHero() {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  const today = new Date();
+  const endOffer = new Date(webinarEndDate.getTime());
+  endOffer.setHours(endOffer.getHours() + 48);
+  const isOffer = today >= webinarEndDate && today < endOffer;
 
   return (
     <section 
@@ -53,26 +59,43 @@ export default function ExclusiveOfferHero() {
             transition={{ duration: 0.8 }}
             className="text-center lg:text-left"
           >
+            {isOffer &&
             <div className="inline-block px-4 py-2 mb-6 rounded-full bg-yellow-400 text-blue-900 font-medium">
               Offerta Esclusiva Post-Webinar
             </div>
-            
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
-              <span className="block">SCONTO ESCLUSIVO 50%</span>
-              <span className="text-yellow-400">SUL PERCORSO COMPLETO</span>
-            </h1>
-            
-            <p className="text-xl text-gray-200 mb-8">
-              Solo per chi ha già acquistato il workshop 
-              <span className="font-semibold text-yellow-300"> Smart Revolution Sprint </span> 
-              a 37€ e vuole completare il percorso di trasformazione.
-            </p>
-            
+            }
+
+            {isOffer ? (
+                <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+                  <span className="block">SCONTO ESCLUSIVO 50%</span>
+                  <span className="text-yellow-400">SUL PERCORSO COMPLETO</span>
+                </h1>
+            ) : (
+                <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+                  <span className="block">ACQUISTA ORA</span>
+                  <span className="text-yellow-400">IL PERCORSO COMPLETO</span>
+                </h1>
+            )}
+
+            {isOffer ? (
+                <p className="text-xl text-gray-200 mb-8">
+                  Solo per chi ha già acquistato il workshop
+                  <span className="font-semibold text-yellow-300"> Smart Revolution Sprint </span>
+                  a 37€ e vuole completare il percorso di trasformazione.
+                </p>
+            ) : (
+                <p className="text-xl text-gray-200 mb-8">
+                  Per intraprendere il tuo percorso di trasformazione e rivoluzione.
+                </p>
+            )}
+
             {/* Countdown Timer - Mobile Only */}
+            {isOffer &&
             <div className="mb-8 lg:hidden">
               <OfferCountdown />
             </div>
-            
+            }
+
             <div className="flex flex-col md:flex-row gap-4 justify-center lg:justify-start">
               <Button 
                 size="lg" 
