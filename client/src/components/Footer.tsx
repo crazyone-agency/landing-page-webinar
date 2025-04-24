@@ -11,11 +11,10 @@ export default function Footer() {
             <div className="mb-6 md:mb-0">
               <div className="flex items-center space-x-2 mb-3">
                 <img 
-                  src="/attached_assets/image_1745495833148.png" 
+                  src="/sg-people-logo.png" 
                   alt="SG People Logo" 
-                  className="h-10 w-auto" 
+                  className="h-16 w-auto" 
                 />
-                <span className="font-medium">SG People Group</span>
               </div>
               <p className="text-sm text-gray-300 max-w-xs">
                 Aiutiamo le persone a realizzare il loro potenziale attraverso strategie pratiche basate su neuroscienze e psicologia.

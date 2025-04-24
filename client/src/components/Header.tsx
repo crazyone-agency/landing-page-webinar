@@ -9,11 +9,10 @@ export default function Header() {
           <Link href="/">
             <div className="flex items-center space-x-2 cursor-pointer">
               <img 
-                src="/attached_assets/image_1745495833148.png" 
+                src="/sg-people-logo.png" 
                 alt="SG People Logo" 
-                className="h-12 w-auto" 
+                className="h-16 w-auto" 
               />
-              <span className="font-medium text-xl text-[#010133]">SG People Group</span>
             </div>
           </Link>
         </div>

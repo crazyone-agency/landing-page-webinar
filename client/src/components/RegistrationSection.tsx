@@ -97,7 +97,7 @@ export default function RegistrationSection({ onRegistrationSuccess }: Registrat
                   {/* Active Campaign Form che sostituisce il form originale */}
                   <div id="activecampaign-form-container">
                     <div className="_form_3"></div>
-                    <script src="https://salvatoregarufi.activehosted.com/f/embed.php?id=3" charset="utf-8"></script>
+                    <script src="https://salvatoregarufi.activehosted.com/f/embed.php?id=3" charSet="utf-8"></script>
                   </div>
                 </div>
                 

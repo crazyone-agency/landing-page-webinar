@@ -102,7 +102,7 @@ export default function HeroSection() {
             <div className="relative">
               <div className="absolute -inset-1 bg-[#F8C112] rounded-lg blur-sm"></div>
               <img 
-                src="/speaker.jpg" 
+                src="/salvatore-garufi.png" 
                 alt="Salvatore Garufi - Professional Speaker" 
                 className="relative rounded-lg w-full max-w-md mx-auto shadow-xl"
               />
