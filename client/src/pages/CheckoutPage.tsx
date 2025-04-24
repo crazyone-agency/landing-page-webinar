@@ -7,7 +7,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { motion } from "framer-motion";
 import { isSpecialOfferExpired } from '@/lib/utils';
-import { Navigate } from 'wouter';
+import { useLocation } from 'wouter';
 
 // Make sure to call `loadStripe` outside of a component's render to avoid
 // recreating the `Stripe` object on every render.
@@ -104,9 +104,13 @@ export default function CheckoutPage() {
       });
   }, [amount, isExpired, toast]);
 
-  if (!clientSecret && !isLoading) {
-    return <Navigate to="/offerta-speciale" />;
-  }
+  const [_, navigate] = useLocation();
+  
+  useEffect(() => {
+    if (!clientSecret && !isLoading) {
+      navigate("/offerta-speciale");
+    }
+  }, [clientSecret, isLoading, navigate]);
 
   return (
     <div className="min-h-screen flex flex-col bg-[#010133]">

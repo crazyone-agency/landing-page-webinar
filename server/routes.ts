@@ -1,8 +1,14 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
+import Stripe from "stripe";
 import { storage } from "./storage";
 import { webinarRegistrationSchema, courseInquirySchema } from "@shared/schema";
 import { ZodError } from "zod";
+
+if (!process.env.STRIPE_SECRET_KEY) {
+  throw new Error('Missing required Stripe secret: STRIPE_SECRET_KEY');
+}
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // API route for webinar registrations
@@ -101,6 +107,40 @@ export async function registerRoutes(app: Express): Promise<Server> {
       return res.status(500).json({
         success: false,
         message: "An error occurred while fetching course inquiries"
+      });
+    }
+  });
+
+  // Stripe payment route for one-time payments
+  app.post("/api/create-payment-intent", async (req, res) => {
+    try {
+      const { amount } = req.body;
+      
+      if (!amount || amount <= 0) {
+        return res.status(400).json({
+          success: false,
+          message: "L'importo deve essere positivo"
+        });
+      }
+      
+      const paymentIntent = await stripe.paymentIntents.create({
+        amount: Math.round(amount * 100), // Convert to cents
+        currency: "eur",
+        automatic_payment_methods: {
+          enabled: true,
+        },
+      });
+      
+      return res.status(200).json({
+        success: true,
+        clientSecret: paymentIntent.client_secret
+      });
+    } catch (error: any) {
+      console.error("Stripe error:", error);
+      return res.status(500).json({ 
+        success: false,
+        message: "Errore durante la creazione dell'intento di pagamento",
+        error: error.message 
       });
     }
   });

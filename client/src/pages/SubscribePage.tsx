@@ -7,7 +7,7 @@ import DynamicHeader from '@/components/DynamicHeader';
 import CourseFooter from '@/components/CourseFooter';
 import { motion } from "framer-motion";
 import { isCourseOfferExpired } from '@/lib/utils';
-import { Navigate } from 'wouter';
+import { useLocation } from 'wouter';
 
 // Make sure to call `loadStripe` outside of a component's render to avoid
 // recreating the `Stripe` object on every render.
@@ -104,9 +104,13 @@ export default function SubscribePage() {
       });
   }, [amount, isExpired, toast]);
 
-  if (!clientSecret && !isLoading) {
-    return <Navigate to="/corso-sviluppo-personale" />;
-  }
+  const [_, navigate] = useLocation();
+  
+  useEffect(() => {
+    if (!clientSecret && !isLoading) {
+      navigate("/corso-sviluppo-personale");
+    }
+  }, [clientSecret, isLoading, navigate]);
 
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#010133' }}>
