@@ -8,8 +8,138 @@
     <link rel="apple-touch-icon" href="https://sgpeople.it/wp-content/uploads/2024/07/cropped-favicon-SG-PEOPLE-180x180.png" />
     <title>SG People - Rivoluzione a piccoli passi</title>
     <!-- ActiveCampaign Form script -->
-    <script src="/js/activecampaign-form.js"></script>
-    <script src="https://salvatoregarufi.activehosted.com/f/embed.php?id=3" charset="utf-8"></script>
+    <script>
+      window.cfields = [];
+      window._show_thank_you = function(id, message, trackcmp_url, email) {
+          var form = document.getElementById('_form_' + id + '_'), thank_you = form.querySelector('._form-thank-you');
+          form.querySelector('._form-content').style.display = 'none';
+          thank_you.innerHTML = message;
+          thank_you.style.display = 'block';
+          const vgoAlias = typeof visitorGlobalObjectAlias === 'undefined' ? 'vgo' : visitorGlobalObjectAlias;
+          var visitorObject = window[vgoAlias];
+          if (email && typeof visitorObject !== 'undefined') {
+              visitorObject('setEmail', email);
+              visitorObject('update');
+          } else if (typeof(trackcmp_url) != 'undefined' && trackcmp_url) {
+              // Site tracking URL to use after inline form submission.
+              _load_script(trackcmp_url);
+          }
+          if (typeof window._form_callback !== 'undefined') window._form_callback(id);
+      };
+      window._show_error = function(id, message, html) {
+          var form = document.getElementById('_form_' + id + '_'),
+              err = document.createElement('div'),
+              button = form.querySelector('button[type="submit"]'),
+              old_error = form.querySelector('._form_error');
+          if (old_error) old_error.parentNode.removeChild(old_error);
+          err.innerHTML = message;
+          err.className = '_error-inner _form_error _no_arrow';
+          var wrapper = document.createElement('div');
+          wrapper.className = '_form-inner _show_be_error';
+          wrapper.appendChild(err);
+          button.parentNode.insertBefore(wrapper, button);
+          var submitButton = form.querySelector('[id^="_form"][id$="_submit"]');
+          submitButton.disabled = false;
+          submitButton.classList.remove('processing');
+          if (html) {
+              var div = document.createElement('div');
+              div.className = '_error-html';
+              div.innerHTML = html;
+              err.appendChild(div);
+          }
+      };
+      window._load_script = function(url, callback, isSubmit) {
+          var head = document.querySelector('head'), script = document.createElement('script'), r = false;
+          var submitButton = document.querySelector('#_form_3_submit');
+          script.charset = 'utf-8';
+          script.src = url;
+          if (callback) {
+              script.onload = script.onreadystatechange = function() {
+                  if (!r && (!this.readyState || this.readyState == 'complete')) {
+                      r = true;
+                      callback();
+                  }
+              };
+          }
+          script.onerror = function() {
+              if (isSubmit) {
+                  if (script.src.length > 10000) {
+                      _show_error("3", "Invio non riuscito. Accorcia le risposte e riprova.");
+                  } else {
+                      _show_error("3", "Invio non riuscito. Riprova.");
+                  }
+                  submitButton.disabled = false;
+                  submitButton.classList.remove('processing');
+              }
+          }
+          head.appendChild(script);
+      };
+      (function() {
+          if (window.location.search.search("excludeform") !== -1) return false;
+          var getCookie = function(name) {
+              var match = document.cookie.match(new RegExp('(^|; )' + name + '=([^;]+)'));
+              return match ? match[2] : null;
+          }
+          var setCookie = function(name, value) {
+              var now = new Date();
+              var time = now.getTime();
+              var expireTime = time + 1000 * 60 * 60 * 24 * 365;
+              now.setTime(expireTime);
+              document.cookie = name + '=' + value + '; expires=' + now + ';path=/; Secure; SameSite=Lax;';
+          }
+              var addEvent = function(element, event, func) {
+              if (element.addEventListener) {
+                  element.addEventListener(event, func);
+              } else {
+                  var oldFunc = element['on' + event];
+                  element['on' + event] = function() {
+                      oldFunc.apply(this, arguments);
+                      func.apply(this, arguments);
+                  };
+              }
+          }
+          var _removed = false;
+          
+          // Inizializzazione del form al caricamento della pagina
+          window.addEventListener('load', function() {
+              const form = document.getElementById('_form_3_');
+              if (form) {
+                  addEvent(form, 'submit', function(e) {
+                      e.preventDefault();
+                      var submitButton = e.target.querySelector('#_form_3_submit');
+                      var err = form.querySelector('._form_error');
+                      var notice = form.querySelector('._form_notice');
+                      if (err) err.parentNode.removeChild(err);
+                      if (notice) notice.parentNode.removeChild(notice);
+                      submitButton.disabled = true;
+                      submitButton.classList.add('processing');
+                      
+                      // Mostra messaggio di ringraziamento dopo l'invio
+                      setTimeout(function() {
+                          const email = form.querySelector('input[name="email"]').value;
+                          const thankYouMessage = `
+                              <div style="text-align: center;">
+                                  <h3 style="font-weight: bold; margin-bottom: 10px;">Grazie per la tua registrazione!</h3>
+                                  <p>Abbiamo inviato un'email di conferma a <strong>${email}</strong> con tutti i dettagli per partecipare al webinar.</p>
+                                  <p>Controlla la tua casella di posta e salva la data sul tuo calendario!</p>
+                              </div>`;
+                          window._show_thank_you('3', thankYouMessage, null, email);
+                          
+                          // Evento per avvisare React dell'avvenuta registrazione
+                          const event = new CustomEvent('registrationSuccess', {
+                              detail: {
+                                  fullName: form.querySelector('input[name="fullname"]').value,
+                                  email: email,
+                                  phone: form.querySelector('input[name="phone"]').value || ''
+                              }
+                          });
+                          document.dispatchEvent(event);
+                      }, 1000);
+                  });
+              }
+          });
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
