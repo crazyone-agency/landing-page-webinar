@@ -7,12 +7,13 @@ interface CountdownProps {
 }
 
 interface TimeLeft {
+  hours: number;
   minutes: number;
   seconds: number;
 }
 
 export default function SpecialOfferCountdown({ className = "" }: CountdownProps) {
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>({ minutes: 0, seconds: 0 });
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>({ hours: 0, minutes: 0, seconds: 0 });
   const [isExpired, setIsExpired] = useState(false);
   
   const calculateTimeLeft = () => {
@@ -20,10 +21,11 @@ export default function SpecialOfferCountdown({ className = "" }: CountdownProps
     
     if (difference <= 0) {
       setIsExpired(true);
-      return { minutes: 0, seconds: 0 };
+      return { hours: 0, minutes: 0, seconds: 0 };
     }
     
     return {
+      hours: Math.floor(difference / (1000 * 60 * 60)),
       minutes: Math.floor((difference / 1000 / 60) % 60),
       seconds: Math.floor((difference / 1000) % 60),
     };
@@ -49,7 +51,7 @@ export default function SpecialOfferCountdown({ className = "" }: CountdownProps
     return num.toString().padStart(2, '0');
   };
   
-  const { minutes, seconds } = timeLeft;
+  const { hours, minutes, seconds } = timeLeft;
   
   // Se l'offerta è scaduta, mostra un messaggio diverso
   if (isExpired) {
@@ -85,6 +87,18 @@ export default function SpecialOfferCountdown({ className = "" }: CountdownProps
           <h3 className="text-white font-semibold mb-2">L'offerta scade tra:</h3>
           
           <div className="flex justify-center space-x-3 mb-2">
+            {hours > 0 && (
+              <>
+                <div className="flex flex-col items-center">
+                  <div className="bg-blue-950 border border-blue-800 rounded-lg px-3 py-2 w-16 text-center">
+                    <span className="text-2xl font-bold text-yellow-400">{formatNumber(hours)}</span>
+                  </div>
+                  <span className="text-xs text-gray-300 mt-1">ORE</span>
+                </div>
+                <div className="text-yellow-400 text-2xl font-bold self-center pb-4">:</div>
+              </>
+            )}
+            
             <div className="flex flex-col items-center">
               <div className="bg-blue-950 border border-blue-800 rounded-lg px-3 py-2 w-16 text-center">
                 <span className="text-2xl font-bold text-yellow-400">{formatNumber(minutes)}</span>

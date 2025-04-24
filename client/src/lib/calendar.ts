@@ -6,8 +6,8 @@ import { webinarDate, webinarEndDate } from './utils';
 export function addEventToCalendar() {
   // ICS file format for calendar events
   const title = "Webinar: Rivoluzione a piccoli passi con Salvatore Garufi";
-  const description = "Webinar gratuito su come trasformare la tua routine e i tuoi risultati con piccole azioni quotidiane basate sulla neuroscienza.";
-  const location = "Online via Zoom";
+  const description = "Webinar gratuito su come trasformare la tua routine e i tuoi risultati con piccole azioni quotidiane basate sulla neuroscienza.\n\nLink di accesso al Webinar: https://us06web.zoom.us/j/86248568208?pwd=8FIOG0xyuT1b8fj8p4ZKEqYFcmxIRm.1\n\nID riunione: 862 4856 8208\nCodice d'accesso: 559597";
+  const location = "Online via Zoom - https://us06web.zoom.us/j/86248568208?pwd=8FIOG0xyuT1b8fj8p4ZKEqYFcmxIRm.1";
   
   const startTime = formatDateForCalendar(webinarDate);
   const endTime = formatDateForCalendar(webinarEndDate);
@@ -22,7 +22,7 @@ export function addEventToCalendar() {
     `SUMMARY:${title}`,
     `DTSTART:${startTime}`,
     `DTEND:${endTime}`,
-    `DESCRIPTION:${description}`,
+    `DESCRIPTION:${description.replace(/\n/g, '\\n')}`,
     `LOCATION:${location}`,
     "STATUS:CONFIRMED",
     "SEQUENCE:0",
