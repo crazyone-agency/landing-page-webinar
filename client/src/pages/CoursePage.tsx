@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "wouter";
+import { CreditCard } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import DynamicHeader from "@/components/DynamicHeader";
 import ExclusiveOfferHero from "@/components/ExclusiveOfferHero";
 import ExclusiveOfferDetails from "@/components/ExclusiveOfferDetails";
@@ -9,12 +12,23 @@ import CourseFaqSection from "@/components/CourseFaqSection";
 import CourseFooter from "@/components/CourseFooter";
 import { CourseActiveCampaignForm } from "@/components/CourseActiveCampaignForm";
 import { isCourseOfferExpired } from "@/lib/utils";
+import { useToast } from "@/hooks/use-toast";
 
 export default function CoursePage() {
   const [showForm, setShowForm] = useState(false);
+  const [_, navigate] = useLocation();
+  const { toast } = useToast();
   
   // Verifica se l'offerta è scaduta
   const isOfferExpired = isCourseOfferExpired();
+  
+  const handleCheckoutClick = () => {
+    toast({
+      title: "Redirect al pagamento",
+      description: "Ti stiamo reindirizzando alla pagina di pagamento",
+    });
+    navigate("/subscribe");
+  };
   
   // Scroll to top on page load
   useEffect(() => {

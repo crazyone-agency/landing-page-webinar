@@ -51,6 +51,18 @@ export default function OtoPage() {
             {/* Price display */}
             <PriceDisplay type="offer" className="mb-6" />
             
+            {/* Buy Now Button */}
+            <div className="mb-6">
+              <Button 
+                onClick={handleCheckoutClick}
+                className="bg-[#F8C112] hover:bg-yellow-500 text-[#010133] text-xl px-8 py-6 rounded-md font-bold flex items-center justify-center gap-2 mx-auto"
+              >
+                <CreditCard className="w-5 h-5" />
+                Acquista Ora
+              </Button>
+              <p className="mt-3 text-sm text-gray-300">Pagamento sicuro con carta di credito/debito</p>
+            </div>
+            
             {/* ActiveCampaign Form */}
             <div className="max-w-xl mx-auto">
               <OtoActiveCampaignForm />
@@ -251,6 +263,18 @@ export default function OtoPage() {
             
             {/* Price display */}
             <PriceDisplay type="offer" className="mb-6" />
+            
+            {/* Buy Now Button */}
+            <div className="mb-6">
+              <Button 
+                onClick={handleCheckoutClick}
+                className="bg-[#F8C112] hover:bg-yellow-500 text-[#010133] text-xl px-8 py-6 rounded-md font-bold flex items-center justify-center gap-2 mx-auto"
+              >
+                <CreditCard className="w-5 h-5" />
+                Acquista Ora
+              </Button>
+              <p className="mt-3 text-sm text-gray-300">Pagamento sicuro con carta di credito/debito</p>
+            </div>
             
             {/* ActiveCampaign Form */}
             <div className="max-w-xl mx-auto">
