@@ -6,12 +6,16 @@ export default function Header() {
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <div className="flex items-center">
           {/* SG People Group Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 rounded-full bg-[#010133] flex items-center justify-center text-white font-bold">
-              SG
+          <Link href="/">
+            <div className="flex items-center space-x-2 cursor-pointer">
+              <img 
+                src="https://sgpeople.it/wp-content/uploads/2024/07/cropped-favicon-SG-PEOPLE-192x192.png" 
+                alt="SG People Logo" 
+                className="h-10 w-auto" 
+              />
+              <span className="font-poppins font-semibold text-[#010133]">SG People Group</span>
             </div>
-            <span className="font-poppins font-semibold text-[#010133]">SG People Group</span>
-          </div>
+          </Link>
         </div>
         
         <div className="flex items-center space-x-4">

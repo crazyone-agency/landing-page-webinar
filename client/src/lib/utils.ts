@@ -22,8 +22,8 @@ export const brandColors = {
 };
 
 // Webinar details
-export const webinarDate = new Date(2023, 4, 3, 18, 30); // May 3rd, 2023 at 18:30
-export const webinarEndDate = new Date(2023, 4, 3, 20, 0); // May 3rd, 2023 at 20:00
+export const webinarDate = new Date(2025, 4, 10, 10, 0); // May 10th, 2025 at 10:00
+export const webinarEndDate = new Date(2025, 4, 10, 11, 30); // May 10th, 2025 at 11:30
 
 // Social media links
 export const socialLinks = {
@@ -40,7 +40,13 @@ export function getWebinarDateFormatted(): string {
 
 // Helper to get webinar time formatted for display
 export function getWebinarTimeFormatted(): string {
-  return formatTime(webinarDate);
+  return `${formatTime(webinarDate)} - ${formatTime(webinarEndDate)}`;
+}
+
+export function getWebinarDuration(): string {
+  const durationMs = webinarEndDate.getTime() - webinarDate.getTime();
+  const durationMinutes = Math.floor(durationMs / (1000 * 60));
+  return `${durationMinutes} minuti`;
 }
 
 // Helper to validate email format
