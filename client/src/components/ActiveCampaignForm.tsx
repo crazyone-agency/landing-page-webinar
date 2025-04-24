@@ -12,6 +12,9 @@ export function ActiveCampaignForm({ onRegistrationSuccess, className = "" }: Ac
   useEffect(() => {
     // Aggiungiamo l'integrazione ufficiale di ActiveCampaign
     if (formContainerRef.current) {
+      // Puliamo eventuali form precedenti
+      formContainerRef.current.innerHTML = '';
+      
       // Creiamo un div con la classe "_form_3" richiesta da ActiveCampaign
       const formContainer = document.createElement('div');
       formContainer.className = '_form_3';
@@ -43,24 +46,46 @@ export function ActiveCampaignForm({ onRegistrationSuccess, className = "" }: Ac
       // Aggiungiamo l'evento personalizzato per il successo del form
       document.addEventListener('activecampaign:formSubmitSuccess', handleSuccess);
       
+      // Osserviamo il DOM per rilevare quando il form è completamente caricato
+      const observer = new MutationObserver((mutations) => {
+        for (const mutation of mutations) {
+          if (mutation.type === 'childList') {
+            const formElements = formContainerRef.current?.querySelectorAll('._form_3 ._form-content');
+            if (formElements && formElements.length > 0) {
+              // Il form è stato caricato, possiamo fermare l'observer
+              observer.disconnect();
+              
+              // Aggiungiamo una classe personalizzata per applicare stili aggiuntivi
+              formContainerRef.current?.classList.add('form-loaded');
+            }
+          }
+        }
+      });
+      
+      // Avviamo l'osservazione
+      observer.observe(formContainerRef.current, { childList: true, subtree: true });
+      
       // Cleanup
       return () => {
         document.removeEventListener('activecampaign:formSubmitSuccess', handleSuccess);
+        observer.disconnect();
         if (formContainerRef.current) {
-          const formDiv = formContainerRef.current.querySelector('._form_3');
-          const scriptElement = formContainerRef.current.querySelector('script[src*="activehosted.com"]');
-          
-          if (formDiv) formDiv.remove();
-          if (scriptElement) scriptElement.remove();
+          formContainerRef.current.innerHTML = '';
         }
       };
     }
   }, [onRegistrationSuccess]);
 
   return (
-    <div ref={formContainerRef} className={`${className} activecampaign-form-container`}>
-      {/* Il form di ActiveCampaign sarà inserito dinamicamente qui */}
-      <div className="mt-6 text-center">
+    <div className={`relative ${className}`}>
+      <div 
+        ref={formContainerRef} 
+        className="activecampaign-form-container p-4 rounded-lg"
+      >
+        {/* Il form di ActiveCampaign sarà inserito dinamicamente qui */}
+      </div>
+      
+      <div className="mt-2 text-center">
         <p className="text-sm text-gray-500">
           <svg xmlns="http://www.w3.org/2000/svg" className="inline-block h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />

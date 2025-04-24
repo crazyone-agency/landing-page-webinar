@@ -108,3 +108,222 @@ body {
     transform: scale(1.03);
   }
 }
+
+/* Stili personalizzati per il form di ActiveCampaign */
+._form_3 {
+  font-family: 'Futura PT', Futura, 'Inter', sans-serif !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+}
+
+/* Titolo del form */
+._form_3 ._form-title,
+._form_3 ._html-code {
+  font-weight: bold !important;
+  font-size: 1.5rem !important;
+  color: #010133 !important;
+  margin-bottom: 1rem !important;
+  display: block !important;
+  text-align: center !important;
+  font-family: 'Futura PT', Futura, 'Poppins', sans-serif !important;
+}
+
+/* Paragrafo sotto il titolo */
+._form_3 ._html-code p {
+  font-size: 1rem !important;
+  color: #4b5563 !important;
+  margin-bottom: 1.5rem !important;
+  text-align: center !important;
+}
+
+/* Etichette dei campi */
+._form_3 ._form-label {
+  font-weight: 500 !important;
+  color: #333 !important;
+  margin-bottom: 0.25rem !important;
+  display: block !important;
+  font-size: 1rem !important;
+}
+
+/* Campi di input */
+._form_3 ._field-wrapper input[type="text"],
+._form_3 ._field-wrapper input[type="email"],
+._form_3 ._field-wrapper input[type="tel"] {
+  width: 100% !important;
+  padding: 0.75rem !important;
+  border-radius: 0.375rem !important;
+  border: 1px solid #d1d5db !important;
+  margin-bottom: 1rem !important;
+  font-size: 1rem !important;
+  outline: none !important;
+  transition: all 0.2s ease-in-out !important;
+  background-color: #f9fafb !important;
+}
+
+/* Effetto focus sui campi */
+._form_3 ._field-wrapper input[type="text"]:focus,
+._form_3 ._field-wrapper input[type="email"]:focus,
+._form_3 ._field-wrapper input[type="tel"]:focus {
+  border-color: #010133 !important;
+  box-shadow: 0 0 0 3px rgba(1, 1, 51, 0.2) !important;
+  background-color: #fff !important;
+}
+
+/* Bottone di invio */
+._form_3 ._button-wrapper ._submit,
+._form_3 button[type="submit"],
+._form_3 #_form_3_submit {
+  background-color: #F8C112 !important;
+  color: #010133 !important;
+  font-weight: bold !important;
+  font-size: 1.1rem !important;
+  padding: 1rem 1.5rem !important;
+  border-radius: 0.375rem !important;
+  border: none !important;
+  cursor: pointer !important;
+  width: 100% !important;
+  transition: all 0.2s ease-in-out !important;
+  margin-top: 0.5rem !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  height: auto !important;
+  line-height: 1.5 !important;
+}
+
+/* Effetto hover sul bottone */
+._form_3 ._button-wrapper ._submit:hover,
+._form_3 button[type="submit"]:hover,
+._form_3 #_form_3_submit:hover {
+  background-color: #e7b10a !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 10px -1px rgba(0, 0, 0, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Effetto active sul bottone */
+._form_3 ._button-wrapper ._submit:active,
+._form_3 button[type="submit"]:active,
+._form_3 #_form_3_submit:active {
+  transform: translateY(0) !important;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Indicatore di campo richiesto */
+._form_3 .field-required {
+  color: #F8C112 !important;
+  margin-left: 0.25rem !important;
+}
+
+/* Checkbox GDPR */
+._form_3 input[type="checkbox"] {
+  accent-color: #010133 !important;
+  margin-right: 0.5rem !important;
+  width: 1.2rem !important;
+  height: 1.2rem !important;
+  vertical-align: middle !important;
+  cursor: pointer !important;
+}
+
+/* Testo del checkbox GDPR */
+._form_3 label[for="gdprConsent"] {
+  font-size: 0.85rem !important;
+  color: #4b5563 !important;
+  display: inline !important;
+  vertical-align: middle !important;
+  cursor: pointer !important;
+  line-height: 1.4 !important;
+}
+
+/* Div del checkbox GDPR */
+._form_3 ._form_element[style*="margin: 10px 0"] {
+  margin: 1.5rem 0 !important;
+  display: flex !important;
+  align-items: flex-start !important;
+}
+
+/* Messaggio di ringraziamento */
+._form_3 ._form-thank-you {
+  background-color: rgba(248, 193, 18, 0.1) !important;
+  border: 1px solid #F8C112 !important;
+  border-radius: 0.5rem !important;
+  padding: 2rem !important;
+  text-align: center !important;
+  margin-top: 1rem !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Stile per il testo nella pagina di ringraziamento */
+._form_3 ._form-thank-you h3 {
+  color: #010133 !important;
+  font-weight: bold !important;
+  margin-bottom: 1rem !important;
+  font-size: 1.5rem !important;
+  font-family: 'Futura PT', Futura, 'Poppins', sans-serif !important;
+}
+
+._form_3 ._form-thank-you p {
+  color: #4b5563 !important;
+  margin-bottom: 0.75rem !important;
+  font-size: 1rem !important;
+}
+
+._form_3 ._form-thank-you strong {
+  color: #010133 !important;
+  font-weight: bold !important;
+}
+
+/* Messaggi di errore */
+._form_3 ._error-inner {
+  color: #ef4444 !important;
+  background-color: rgba(239, 68, 68, 0.1) !important;
+  padding: 0.75rem !important;
+  border-radius: 0.375rem !important;
+  margin: 0.5rem 0 1rem 0 !important;
+  font-size: 0.9rem !important;
+  border-left: 3px solid #ef4444 !important;
+}
+
+/* Container del form */
+.activecampaign-form-container {
+  background-color: white !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Contenuto del form */
+._form-content {
+  padding: 0.5rem !important;
+}
+
+/* Per migliorare la visualizzazione su mobile */
+@media (max-width: 640px) {
+  ._form_3 ._form-title {
+    font-size: 1.25rem !important;
+  }
+  
+  ._form_3 ._html-code p {
+    font-size: 0.9rem !important;
+  }
+  
+  ._form_3 ._field-wrapper input[type="text"],
+  ._form_3 ._field-wrapper input[type="email"],
+  ._form_3 ._field-wrapper input[type="tel"] {
+    padding: 0.6rem !important;
+    font-size: 0.95rem !important;
+  }
+  
+  ._form_3 ._button-wrapper ._submit,
+  ._form_3 button[type="submit"],
+  ._form_3 #_form_3_submit {
+    padding: 0.85rem 1rem !important;
+    font-size: 1rem !important;
+  }
+  
+  ._form_3 ._form-thank-you {
+    padding: 1.5rem !important;
+  }
+  
+  ._form_3 ._form-thank-you h3 {
+    font-size: 1.2rem !important;
+  }
+}
