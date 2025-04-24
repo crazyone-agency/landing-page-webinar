@@ -68,8 +68,7 @@ export class MemStorage implements IStorage {
     const newRegistration: WebinarRegistrationRecord = { 
       ...registration, 
       id,
-      gdprConsent: !!registration.gdprConsent,
-      commitmentPledge: registration.commitmentPledge || false 
+      gdprConsent: !!registration.gdprConsent
     };
     this.webinarRegistrations.set(id, newRegistration);
     return newRegistration;
