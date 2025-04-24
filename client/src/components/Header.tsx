@@ -9,24 +9,24 @@ export default function Header() {
           <Link href="/">
             <div className="flex items-center space-x-2 cursor-pointer">
               <img 
-                src="https://sgpeople.it/wp-content/uploads/2024/07/cropped-favicon-SG-PEOPLE-192x192.png" 
+                src="/attached_assets/image_1745495833148.png" 
                 alt="SG People Logo" 
-                className="h-10 w-auto" 
+                className="h-12 w-auto" 
               />
-              <span className="font-poppins font-semibold text-[#010133]">SG People Group</span>
+              <span className="font-medium text-xl text-[#010133]">SG People Group</span>
             </div>
           </Link>
         </div>
         
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-6">
           <Link href="/corso-sviluppo-personale">
-            <span className="text-[#010133] hover:text-[#F8C112] transition duration-300 font-medium text-sm cursor-pointer">
+            <span className="text-[#010133] hover:text-[#F8C112] transition duration-300 font-medium cursor-pointer">
               Percorso Sviluppo Personale
             </span>
           </Link>
           
           <Link href="#register-now">
-            <span className="hidden md:block bg-[#F8C112] hover:bg-yellow-500 transition duration-300 text-[#010133] font-semibold px-4 py-2 rounded-md shadow-sm text-sm cursor-pointer">
+            <span className="hidden md:block bg-[#F8C112] hover:bg-yellow-500 transition duration-300 text-[#010133] font-medium px-4 py-2 rounded-md shadow-sm cursor-pointer">
               Riserva il tuo posto
             </span>
           </Link>
