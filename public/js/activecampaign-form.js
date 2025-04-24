@@ -123,6 +123,13 @@ function handleFormSubmit(form) {
         if (typeof window.onRegistrationSuccess === 'function') {
             window.onRegistrationSuccess({ fullName, email, phone });
         }
+        
+        // Controllo se è presente la funzione di redirect al pagamento
+        if (typeof window.redirectToPayment === 'function') {
+            setTimeout(() => {
+                window.redirectToPayment({ fullName, email, phone });
+            }, 2000); // Ritardo di 2 secondi per permettere all'utente di leggere il messaggio
+        }
     })
     .catch(error => {
         window._show_error('3', 'Si è verificato un errore durante l\'invio. Riprova più tardi.');
@@ -136,7 +143,7 @@ function handleFormSubmit(form) {
 }
 
 // Funzione da chiamare per inizializzare il form
-function initActiveCampaignForm(formSelector, onSuccess) {
+function initActiveCampaignForm(formSelector, onSuccess, redirectPayment) {
     const form = document.querySelector(formSelector);
     
     if (form) {
@@ -160,6 +167,11 @@ function initActiveCampaignForm(formSelector, onSuccess) {
         // Imposta il callback di successo se fornito
         if (onSuccess && typeof onSuccess === 'function') {
             window.onRegistrationSuccess = onSuccess;
+        }
+        
+        // Imposta il redirect al pagamento se fornito
+        if (redirectPayment && typeof redirectPayment === 'function') {
+            window.redirectToPayment = redirectPayment;
         }
         
         // Aggiungi event listener per la sottomissione del form
