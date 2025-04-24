@@ -2,12 +2,22 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { brandColors } from "@/lib/course-utils";
 import OfferCountdown from "./OfferCountdown";
+import PriceDisplay from "./PriceDisplay";
 
-export default function ExclusiveOfferHero() {
+interface ExclusiveOfferHeroProps {
+  onRequestInfo?: () => void;
+  isOfferExpired?: boolean;
+}
+
+export default function ExclusiveOfferHero({ onRequestInfo, isOfferExpired = false }: ExclusiveOfferHeroProps) {
   const scrollToInquiry = () => {
-    const element = document.getElementById('offerta-esclusiva');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (onRequestInfo) {
+      onRequestInfo();
+    } else {
+      const element = document.getElementById('offerta-esclusiva');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -54,18 +64,37 @@ export default function ExclusiveOfferHero() {
             className="text-center lg:text-left"
           >
             <div className="inline-block px-4 py-2 mb-6 rounded-full bg-yellow-400 text-blue-900 font-medium">
-              Offerta Esclusiva Post-Webinar
+              {isOfferExpired ? "Percorso Formativo Completo" : "Offerta Esclusiva Post-Webinar"}
             </div>
             
             <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
-              <span className="block">SCONTO ESCLUSIVO 50%</span>
-              <span className="text-yellow-400">SUL PERCORSO COMPLETO</span>
+              {!isOfferExpired ? (
+                <>
+                  <span className="block">SCONTO ESCLUSIVO 50%</span>
+                  <span className="text-yellow-400">SUL PERCORSO COMPLETO</span>
+                </>
+              ) : (
+                <>
+                  <span className="block">PERCORSO FORMATIVO</span>
+                  <span className="text-yellow-400">IN SVILUPPO PERSONALE</span>
+                </>
+              )}
             </h1>
             
             <p className="text-xl text-gray-200 mb-8">
-              Solo per chi ha già acquistato il workshop 
-              <span className="font-semibold text-yellow-300"> Smart Revolution Sprint </span> 
-              a 37€ e vuole completare il percorso di trasformazione.
+              {!isOfferExpired ? (
+                <>
+                  Solo per chi ha già acquistato il workshop 
+                  <span className="font-semibold text-yellow-300"> Smart Revolution Sprint </span> 
+                  a 37€ e vuole completare il percorso di trasformazione.
+                </>
+              ) : (
+                <>
+                  Un esclusivo percorso di formazione con 
+                  <span className="font-semibold text-yellow-300"> Salvatore Garufi </span> 
+                  per sbloccare il tuo pieno potenziale personale e professionale.
+                </>
+              )}
             </p>
             
             {/* Countdown Timer - Mobile Only */}
@@ -79,7 +108,7 @@ export default function ExclusiveOfferHero() {
                 className="bg-yellow-400 text-blue-900 hover:bg-yellow-300 font-semibold px-8 py-6 text-lg" 
                 onClick={scrollToInquiry}
               >
-                SCOPRI L'OFFERTA
+                {!isOfferExpired ? "SCOPRI L'OFFERTA" : "RICHIEDI INFORMAZIONI"}
               </Button>
               
               <Button 
@@ -100,23 +129,36 @@ export default function ExclusiveOfferHero() {
           >
             <div className="bg-blue-800/50 backdrop-blur-sm p-8 rounded-lg border border-yellow-400/30">
               {/* Countdown Timer - Desktop */}
-              <div className="hidden lg:block mb-6">
-                <OfferCountdown />
-              </div>
-              
-              <div className="mb-6">
-                <div className="text-white text-lg mb-1">Prezzo originale</div>
-                <div className="text-4xl font-bold text-white relative inline-block">
-                  €8000
-                  <div className="h-1 bg-red-500 absolute top-1/2 -left-2 w-[calc(100%+16px)] transform rotate-12"></div>
+              {!isOfferExpired && (
+                <div className="hidden lg:block mb-6">
+                  <OfferCountdown />
                 </div>
-              </div>
+              )}
               
-              <div className="mb-6">
-                <div className="text-yellow-400 text-xl mb-1">Prezzo speciale -50%</div>
-                <div className="text-6xl font-bold text-yellow-400">€4000</div>
-                <div className="text-gray-300 text-sm">IVA inclusa</div>
-              </div>
+              {/* Price display */}
+              {isOfferExpired ? (
+                <div className="mb-6">
+                  <div className="text-white text-lg mb-1">Prezzo del corso</div>
+                  <div className="text-6xl font-bold text-yellow-400">€8.000</div>
+                  <div className="text-gray-300 text-sm">IVA inclusa</div>
+                </div>
+              ) : (
+                <>
+                  <div className="mb-6">
+                    <div className="text-white text-lg mb-1">Prezzo originale</div>
+                    <div className="text-4xl font-bold text-white relative inline-block">
+                      €8000
+                      <div className="h-1 bg-red-500 absolute top-1/2 -left-2 w-[calc(100%+16px)] transform rotate-12"></div>
+                    </div>
+                  </div>
+                  
+                  <div className="mb-6">
+                    <div className="text-yellow-400 text-xl mb-1">Prezzo speciale -50%</div>
+                    <div className="text-6xl font-bold text-yellow-400">€4000</div>
+                    <div className="text-gray-300 text-sm">IVA inclusa</div>
+                  </div>
+                </>
+              )}
               
               <div className="p-4 bg-yellow-400/10 border border-yellow-400/40 rounded-lg mb-6">
                 <h3 className="text-yellow-400 font-semibold text-lg mb-2">Bonus inclusi:</h3>
@@ -148,9 +190,11 @@ export default function ExclusiveOfferHero() {
                   className="w-full bg-yellow-400 text-blue-900 hover:bg-yellow-300 font-semibold py-6 text-lg"
                   onClick={scrollToInquiry}
                 >
-                  APPROFITTA DELLO SCONTO
+                  {!isOfferExpired ? "APPROFITTA DELLO SCONTO" : "RICHIEDI INFORMAZIONI"}
                 </Button>
-                <p className="text-gray-300 text-sm mt-2">Offerta valida solo per chi ha già acquistato Smart Revolution Sprint</p>
+                {!isOfferExpired && (
+                  <p className="text-gray-300 text-sm mt-2">Offerta valida solo per chi ha già acquistato Smart Revolution Sprint</p>
+                )}
               </div>
             </div>
             

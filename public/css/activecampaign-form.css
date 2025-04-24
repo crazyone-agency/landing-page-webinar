@@ -1,0 +1,123 @@
+/* Stili personalizzati per il form di ActiveCampaign */
+
+/* Titolo form in giallo */
+._form_3 ._form-title {
+  color: #F8C112 !important;
+  font-weight: bold !important;
+  font-size: 1.25rem !important;
+  margin-bottom: 1rem !important;
+  text-align: center !important;
+}
+
+/* Sfondo del form e spaziatura */
+._form_3 {
+  background-color: rgba(1, 1, 51, 0.5) !important;
+  padding: 20px !important;
+  border-radius: 8px !important;
+}
+
+/* Allineamento di tutti i campi */
+._form_3 ._form_element {
+  margin-bottom: 16px !important;
+}
+
+/* Larghezza campi al 100% */
+._form_3 input[type="text"] {
+  width: 100% !important;
+  padding: 10px !important;
+  border-radius: 4px !important;
+  border: 1px solid rgba(248, 193, 18, 0.3) !important;
+  background-color: rgba(1, 1, 51, 0.7) !important;
+  color: white !important;
+}
+
+/* Animazione al focus */
+._form_3 input[type="text"]:focus {
+  border-color: #F8C112 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(248, 193, 18, 0.2) !important;
+}
+
+/* Etichette */
+._form_3 ._form-label {
+  color: #e0e0e0 !important;
+  font-weight: normal !important;
+  margin-bottom: 4px !important;
+  display: block !important;
+}
+
+/* Campo richiesto */
+._form_3 .field-required {
+  color: #F8C112 !important;
+}
+
+/* Checkbox GDPR */
+._form_3 .sms_consent_checkbox {
+  display: flex !important;
+  align-items: flex-start !important;
+  margin: 16px 0 !important;
+}
+
+._form_3 input[type="checkbox"] {
+  margin-right: 10px !important;
+  margin-top: 3px !important;
+}
+
+._form_3 .sms_consent_message {
+  color: #e0e0e0 !important;
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+}
+
+/* Bottone submit */
+._form_3 ._submit {
+  width: 100% !important;
+  background-color: #F8C112 !important;
+  color: #010133 !important;
+  font-weight: bold !important;
+  padding: 12px !important;
+  border: none !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  font-size: 1rem !important;
+  transition: background-color 0.2s ease !important;
+}
+
+._form_3 ._submit:hover {
+  background-color: #e0b010 !important;
+}
+
+/* Rimuovi branding */
+._form_3 ._form-branding {
+  display: none !important;
+}
+
+/* Messaggio di successo */
+._form_3 ._form-thank-you {
+  background-color: rgba(54, 54, 121, 0.7) !important;
+  color: white !important;
+  padding: 20px !important;
+  border-radius: 8px !important;
+  text-align: center !important;
+  border: 1px solid rgba(248, 193, 18, 0.3) !important;
+}
+
+/* Messaggio di errore */
+._form_3 ._error-inner {
+  color: #ff5757 !important;
+  background-color: rgba(255, 87, 87, 0.1) !important;
+  padding: 10px !important;
+  border-radius: 4px !important;
+  margin-bottom: 16px !important;
+}
+
+/* Responsive per mobile */
+@media (max-width: 640px) {
+  ._form_3 {
+    padding: 15px !important;
+  }
+  
+  ._form_3 ._submit {
+    padding: 10px !important;
+  }
+}

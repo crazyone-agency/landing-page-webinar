@@ -6,6 +6,7 @@
     <link rel="icon" href="https://sgpeople.it/wp-content/uploads/2024/07/cropped-favicon-SG-PEOPLE-32x32.png" sizes="32x32" />
     <link rel="icon" href="https://sgpeople.it/wp-content/uploads/2024/07/cropped-favicon-SG-PEOPLE-192x192.png" sizes="192x192" />
     <link rel="apple-touch-icon" href="https://sgpeople.it/wp-content/uploads/2024/07/cropped-favicon-SG-PEOPLE-180x180.png" />
+    <link rel="stylesheet" href="/css/activecampaign-form.css" />
     <title>SG People - Rivoluzione a piccoli passi</title>
     <!-- Script per l'evento di successo del form ActiveCampaign -->
     <script>
@@ -47,6 +48,35 @@
         setTimeout(() => {
           clearInterval(checkFormSuccess);
         }, 120000);
+
+        // Osservatore per aggiungere gli stili per l'allineamento dei campi
+        const formObserver = new MutationObserver((mutations) => {
+          for (const mutation of mutations) {
+            if (mutation.type === 'childList') {
+              // Cerchiamo il campo "Nome Completo" e applichiamo lo stile width: 100%
+              const fullNameField = document.querySelector('#fullname');
+              if (fullNameField) {
+                fullNameField.style.width = '100%';
+                // Applichiamo lo stesso stile a tutti gli altri input text
+                const allInputs = document.querySelectorAll('._form_3 input[type="text"]');
+                allInputs.forEach(input => {
+                  input.style.width = '100%';
+                });
+                
+                // Abbiamo trovato e sistemato il campo, fermiamo l'observer
+                formObserver.disconnect();
+              }
+            }
+          }
+        });
+        
+        // Avviamo l'osservazione del documento
+        formObserver.observe(document.body, { childList: true, subtree: true });
+        
+        // Timeout dopo 10 secondi
+        setTimeout(() => {
+          formObserver.disconnect();
+        }, 10000);
       });
     </script>
   </head>
