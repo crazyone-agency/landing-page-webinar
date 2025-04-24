@@ -1,6 +1,6 @@
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { motion } from "framer-motion";
-import { ArrowRight, Check, Clock, Download, Gift, Star } from "lucide-react";
+import { ArrowRight, Check, Clock, CreditCard, Download, Gift, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -8,10 +8,21 @@ import { cn, isSpecialOfferExpired } from "@/lib/utils";
 import { OtoActiveCampaignForm } from "@/components/OtoActiveCampaignForm";
 import PriceDisplay from "@/components/PriceDisplay";
 import SpecialOfferCountdown from "@/components/SpecialOfferCountdown";
+import { useToast } from "@/hooks/use-toast";
 
 export default function OtoPage() {
   // Controlla se l'offerta è scaduta
   const isOfferExpired = isSpecialOfferExpired();
+  const [_, navigate] = useLocation();
+  const { toast } = useToast();
+  
+  const handleCheckoutClick = () => {
+    toast({
+      title: "Redirect al pagamento",
+      description: "Ti stiamo reindirizzando alla pagina di pagamento",
+    });
+    navigate("/checkout");
+  };
   
   return (
     <div className="min-h-screen flex flex-col">

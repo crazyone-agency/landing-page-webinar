@@ -16,6 +16,8 @@ function Router() {
       <Route path="/" component={LandingPage} />
       <Route path="/corso-sviluppo-personale" component={CoursePage} />
       <Route path="/offerta-speciale" component={OtoPage} />
+      <Route path="/checkout" component={CheckoutPage} />
+      <Route path="/subscribe" component={SubscribePage} />
       <Route component={NotFound} />
     </Switch>
   );
