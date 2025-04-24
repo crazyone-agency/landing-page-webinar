@@ -13,6 +13,7 @@ import CourseFooter from "@/components/CourseFooter";
 import { CourseActiveCampaignForm } from "@/components/CourseActiveCampaignForm";
 import { isCourseOfferExpired } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
+import { WebinarRegistration } from "@shared/schema";
 
 export default function CoursePage() {
   const [showForm, setShowForm] = useState(false);
@@ -33,6 +34,13 @@ export default function CoursePage() {
   // Scroll to top on page load
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+  
+  // Setup del redirect a Stripe dopo il form
+  useEffect(() => {
+    if (typeof window.setupStripeRedirect === 'function') {
+      window.setupStripeRedirect('/subscribe');
+    }
   }, []);
 
   // Funzione per mostrare il form al posto dell'inquiry form
