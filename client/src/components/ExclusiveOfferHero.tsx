@@ -1,15 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { brandColors } from "@/lib/course-utils";
+import { CreditCard } from "lucide-react";
 import OfferCountdown from "./OfferCountdown";
 import PriceDisplay from "./PriceDisplay";
 
 interface ExclusiveOfferHeroProps {
   onRequestInfo?: () => void;
   isOfferExpired?: boolean;
+  onBuyNow?: () => void;
 }
 
-export default function ExclusiveOfferHero({ onRequestInfo, isOfferExpired = false }: ExclusiveOfferHeroProps) {
+export default function ExclusiveOfferHero({ onRequestInfo, isOfferExpired = false, onBuyNow }: ExclusiveOfferHeroProps) {
   const scrollToInquiry = () => {
     if (onRequestInfo) {
       onRequestInfo();
@@ -184,14 +186,26 @@ export default function ExclusiveOfferHero({ onRequestInfo, isOfferExpired = fal
                 </ul>
               </div>
               
-              <div className="text-center">
+              <div className="text-center space-y-3">
+                {!isOfferExpired && onBuyNow && (
+                  <Button 
+                    size="lg"
+                    className="w-full bg-yellow-400 text-blue-900 hover:bg-yellow-300 font-semibold py-6 text-lg flex items-center justify-center gap-2"
+                    onClick={onBuyNow}
+                  >
+                    <CreditCard className="w-5 h-5" />
+                    ACQUISTA ORA
+                  </Button>
+                )}
+                
                 <Button 
                   size="lg"
-                  className="w-full bg-yellow-400 text-blue-900 hover:bg-yellow-300 font-semibold py-6 text-lg"
+                  className={`w-full ${!isOfferExpired && onBuyNow ? 'bg-blue-600 hover:bg-blue-700' : 'bg-yellow-400 hover:bg-yellow-300'} text-white font-semibold py-6 text-lg`}
                   onClick={scrollToInquiry}
                 >
                   {!isOfferExpired ? "APPROFITTA DELLO SCONTO" : "RICHIEDI INFORMAZIONI"}
                 </Button>
+                
                 {!isOfferExpired && (
                   <p className="text-gray-300 text-sm mt-2">Offerta valida solo per chi ha già acquistato Smart Revolution Sprint</p>
                 )}

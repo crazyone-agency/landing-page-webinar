@@ -50,7 +50,11 @@ export default function CoursePage() {
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#010133' }}>
       <DynamicHeader />
       <main className="flex-grow">
-        <ExclusiveOfferHero onRequestInfo={handleShowForm} isOfferExpired={isOfferExpired} />
+        <ExclusiveOfferHero 
+          onRequestInfo={handleShowForm} 
+          isOfferExpired={isOfferExpired}
+          onBuyNow={handleCheckoutClick}
+        />
         <ExclusiveOfferDetails />
         <ExclusiveOfferTestimonials />
         <CourseBioSection />
@@ -69,6 +73,20 @@ export default function CoursePage() {
                   Approfitta ora dell'<span className="text-yellow-400">offerta esclusiva</span>
                 </h2>
               </div>
+              
+              {!isOfferExpired && (
+                <div className="max-w-xl mx-auto mb-8">
+                  <Button 
+                    className="w-full bg-yellow-400 hover:bg-yellow-300 text-[#010133] font-bold text-lg px-6 py-5 rounded-md flex items-center justify-center gap-2 mb-4"
+                    onClick={handleCheckoutClick}
+                  >
+                    <CreditCard className="w-5 h-5" />
+                    ACQUISTA ORA - €4.000
+                  </Button>
+                  <p className="text-center text-gray-300 text-sm">Pagamento sicuro con carta di credito/debito</p>
+                </div>
+              )}
+              
               <div className="max-w-xl mx-auto">
                 <CourseActiveCampaignForm />
               </div>
