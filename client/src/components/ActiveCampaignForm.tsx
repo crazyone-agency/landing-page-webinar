@@ -10,7 +10,7 @@ interface ActiveCampaignFormProps {
   className?: string;
 }
 
-export default function ActiveCampaignForm({ id = "registration-form" }: ActiveCampaignFormProps) {
+export default function ActiveCampaignForm({ id = "registration-form", onRegistrationSuccess, className = "" }: ActiveCampaignFormProps) {
   const formContainerRef = useRef<HTMLDivElement>(null);
   const [showThankYou, setShowThankYou] = useState(false);
   const [userEmail, setUserEmail] = useState('');
@@ -113,10 +113,15 @@ export default function ActiveCampaignForm({ id = "registration-form" }: ActiveC
 
     // Recupera i dati dal form
     const formData = new FormData(formRef.current);
+    const fullName = formData.get('fullname') as string;
     const email = formData.get('email') as string;
+    const phone = formData.get('phone') as string;
     
     // Salva l'email per il modale di ringraziamento
     setUserEmail(email);
+    
+    // Dati utente da passare al callback
+    const userData = { fullName, email, phone, gdprConsent: true };
     
     // Invia i dati a ActiveCampaign
     fetch('https://salvatoregarufi.activehosted.com/proc.php', {
@@ -127,6 +132,11 @@ export default function ActiveCampaignForm({ id = "registration-form" }: ActiveC
     .then(() => {
       // Mostra il modale di ringraziamento
       setShowThankYou(true);
+      
+      // Chiama il callback onRegistrationSuccess se fornito
+      if (onRegistrationSuccess && typeof onRegistrationSuccess === 'function') {
+        onRegistrationSuccess(userData);
+      }
       
       // Reimposta il form
       formRef.current?.reset();
@@ -147,7 +157,7 @@ export default function ActiveCampaignForm({ id = "registration-form" }: ActiveC
   };
 
   return (
-    <div id={id} className="mb-10">
+    <div id={id} className={`mb-10 ${className}`}>
       <div 
         ref={formContainerRef} 
         className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md"
