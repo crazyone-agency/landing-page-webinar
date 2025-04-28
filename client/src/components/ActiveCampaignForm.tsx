@@ -70,6 +70,12 @@ export default function ActiveCampaignForm({ id = "registration-form", onRegistr
       <input type="text" id="phone" name="phone" placeholder="Digita il numero di telefono" />
     </div>
   </div>
+  <div class="_form_element _x48372010 _inline-style">
+    <div class="sms_consent_checkbox">
+      <input id="gdpr_consent" name="gdpr_consent" type="checkbox" required />
+      <span class="sms_consent_message">Accetto la <a href="https://sgpeople.it/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> e acconsento al trattamento dei miei dati personali per le finalità descritte.</span>
+    </div>
+  </div>
   <div class="_button-wrapper _inline-style">
     <button id="_form_5_submit" class="_submit" type="submit">
       Invia
@@ -105,6 +111,34 @@ export default function ActiveCampaignForm({ id = "registration-form", onRegistr
     
     if (!formRef.current) return;
     
+    // Verifica la validità del form (campi required)
+    const fullNameInput = formRef.current.querySelector('input[name="fullname"]') as HTMLInputElement;
+    const emailInput = formRef.current.querySelector('input[name="email"]') as HTMLInputElement;
+    const gdprConsentInput = formRef.current.querySelector('input[name="gdpr_consent"]') as HTMLInputElement;
+    
+    if (!fullNameInput || !fullNameInput.value.trim() || 
+        !emailInput || !emailInput.value.trim() || 
+        !gdprConsentInput || !gdprConsentInput.checked) {
+      // Se i campi obbligatori non sono compilati, mostra un errore browser nativo
+      if (!fullNameInput.value.trim()) {
+        fullNameInput.setCustomValidity('Per favore inserisci il tuo nome');
+      }
+      
+      if (!emailInput.value.trim()) {
+        emailInput.setCustomValidity('Per favore inserisci la tua email');
+      }
+      
+      if (!gdprConsentInput.checked) {
+        gdprConsentInput.setCustomValidity('Per continuare devi accettare la Privacy Policy');
+      }
+      
+      // Forza la validazione del browser
+      fullNameInput.reportValidity();
+      emailInput.reportValidity();
+      gdprConsentInput.reportValidity();
+      return;
+    }
+    
     const submitButton = formRef.current.querySelector('button[type="submit"]');
     if (submitButton) {
       submitButton.setAttribute('disabled', 'true');
@@ -116,6 +150,15 @@ export default function ActiveCampaignForm({ id = "registration-form", onRegistr
     const fullName = formData.get('fullname') as string;
     const email = formData.get('email') as string;
     const phone = formData.get('phone') as string;
+    
+    // Verifica che i dati obbligatori ci siano
+    if (!fullName || !email) {
+      if (submitButton) {
+        submitButton.removeAttribute('disabled');
+        submitButton.classList.remove('processing');
+      }
+      return;
+    }
     
     // Salva l'email per il modale di ringraziamento
     setUserEmail(email);

@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRightIcon } from 'lucide-react';
 
@@ -20,6 +19,13 @@ export default function FloatingCta() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleClick = () => {
+    const registerSection = document.getElementById('register-now');
+    if (registerSection) {
+      registerSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <AnimatePresence>
       {visible && (
@@ -30,12 +36,13 @@ export default function FloatingCta() {
           transition={{ duration: 0.3 }}
           className="fixed bottom-6 right-6 z-50"
         >
-          <Link href="#register-now">
-            <span className="flex items-center justify-center bg-[#F8C112] hover:bg-[#e0ad0f] transition-all duration-300 text-[#010133] font-bold px-5 py-3 rounded-full shadow-lg cursor-pointer">
-              <span className="mr-2">Riserva il tuo posto</span>
-              <ArrowRightIcon size={18} />
-            </span>
-          </Link>
+          <button 
+            onClick={handleClick}
+            className="flex items-center justify-center bg-[#F8C112] hover:bg-[#e0ad0f] transition-all duration-300 text-[#010133] font-bold px-5 py-3 rounded-full shadow-lg cursor-pointer"
+          >
+            <span className="mr-2">Riserva il tuo posto</span>
+            <ArrowRightIcon size={18} />
+          </button>
         </motion.div>
       )}
     </AnimatePresence>

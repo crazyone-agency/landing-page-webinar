@@ -40,7 +40,7 @@ export default function SocialProofSection() {
                 </div>
               </div>
               <p className="italic text-gray-700 mb-4">
-                "Il metodo di Salvatore ha trasformato il mio approccio al lavoro. Le micro-azioni mi hanno permesso di superare la procrastinazione cronica che mi bloccava da anni."
+                "Il metodo di Salvatore ha trasformato il mio approccio al lavoro. Le piccole azioni mi hanno permesso di superare la procrastinazione cronica che mi bloccava da anni."
               </p>
               <div className="flex items-center">
                 <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center">

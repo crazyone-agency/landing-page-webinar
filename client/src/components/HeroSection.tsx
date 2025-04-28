@@ -73,7 +73,7 @@ export default function HeroSection() {
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#F8C112]" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
                 </svg>
-                <span className="text-sm">Solo per i primi 200 iscritti</span>
+                <span className="text-sm">Solo per i primi 20 iscritti</span>
               </div>
             </div>
             <div className="flex items-center gap-3">
@@ -111,8 +111,8 @@ export default function HeroSection() {
             <div className="relative">
               <div className="absolute -inset-1 bg-[#F8C112] rounded-lg blur-sm"></div>
               <img 
-                src="https://sgpeople.it/wp-content/uploads/2024/11/Foto-Ufficiale.png" 
-                alt="Salvatore Garufi - Professional Speaker" 
+                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                alt="Gruppo di lavoro con Salvatore Garufi" 
                 className="relative rounded-lg w-full max-w-md mx-auto shadow-xl"
               />
               <div className="absolute top-4 right-4 bg-[#F8C112] text-[#010133] font-bold text-sm px-3 py-1 rounded-full shadow-md">
