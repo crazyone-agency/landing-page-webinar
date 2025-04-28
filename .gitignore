@@ -4,3 +4,9 @@ dist
 server/public
 vite.config.ts.*
 *.tar.gz
+
+# Variabili d'ambiente e segreti
+.env
+.env.local
+.env.development
+.env.production
