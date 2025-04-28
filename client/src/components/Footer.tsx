@@ -17,9 +17,9 @@ export default function Footer() {
             <div className="mb-6 md:mb-0">
               <div className="flex items-center space-x-2 mb-3">
                 <img 
-                  src="https://sgpeople.it/wp-content/uploads/2024/04/logo_white_transparent_SGP.png" 
+                  src="https://sgpeople.it/wp-content/uploads/2024/06/cropped-sg-people-group-ok-01.png"
                   alt="SG People Logo" 
-                  className="h-16 w-auto" 
+                  className="h-16 w-auto"
                 />
               </div>
               <p className="text-sm text-gray-300 max-w-xs">
