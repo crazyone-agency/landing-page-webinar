@@ -9,10 +9,28 @@ import { motion } from "framer-motion";
 import { isSpecialOfferExpired } from '@/lib/utils';
 import { useLocation } from 'wouter';
 
-// Importa le immagini delle carte di credito
-import visaLogo from "/assets/payments/visa.svg";
-import mastercardLogo from "/assets/payments/mastercard.svg";
-import amexLogo from "/assets/payments/amex.svg";
+// Definiamo le icone delle carte inline per evitare problemi di percorso
+const visaIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px">
+  <path fill="#1565C0" d="M45,35c0,2.209-1.791,4-4,4H7c-2.209,0-4-1.791-4-4V13c0-2.209,1.791-4,4-4h34c2.209,0,4,1.791,4,4V35z"/>
+  <path fill="#FFF" d="M15.186 19l-2.626 7.832c0 0-.667-3.313-.733-3.729-1.495-3.411-3.701-3.221-3.701-3.221L10.726 30v-.002h3.161L18.258 19H15.186zM17.689 30L20.56 30 22.296 19 19.389 19zM38.008 19h-3.021l-4.71 11h2.852l.588-1.571h3.596L37.619 30h2.613L38.008 19zM34.513 26.328l1.563-4.157.818 4.157H34.513zM26.369 22.206c0-.606.498-1.057 1.926-1.057.928 0 1.991.146 1.991.146l.466-2.085c0 0-1.358-.499-3.018-.499-3.229 0-4.878 1.592-4.878 3.442 0 2.013 3.94 2.35 3.94 3.55 0 .117-.044.23-.19.499-.292.55-1.758.336-2.732.087l-.337 2.264c0 0 1.279.437 3.394.437 2.732 0 5.446-1.699 5.446-4.471C32.378 22.092 26.369 22.206 26.369 22.206z"/>
+</svg>`;
+
+const mastercardIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px">
+  <path fill="#3F51B5" d="M45,35c0,2.209-1.791,4-4,4H7c-2.209,0-4-1.791-4-4V13c0-2.209,1.791-4,4-4h34c2.209,0,4,1.791,4,4V35z"/>
+  <path fill="#FFC107" d="M30,24c0,3.314-2.686,6-6,6s-6-2.686-6-6s2.686-6,6-6S30,20.686,30,24"/>
+  <path fill="#FF3D00" d="M22.001,24c0,1.1.9,2,2,2s2-.9,2-2-.9-2-2-2S22.001,22.9,22.001,24z"/>
+  <path fill="#FF3D00" d="M30,24c0,3.314-2.686,6-6,6s-6-2.686-6-6s2.686-6,6-6S30,20.686,30,24"/>
+  <path fill="#FFC107" d="M18,24c0-3.314,2.686-6,6-6s6,2.686,6,6"/>
+</svg>`;
+
+const amexIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px">
+  <path fill="#1976D2" d="M45,35c0,2.209-1.791,4-4,4H7c-2.209,0-4-1.791-4-4V13c0-2.209,1.791-4,4-4h34c2.209,0,4,1.791,4,4V35z"/>
+  <path fill="#FFF" d="M22.255 20.773L24.182 20.773 23.219 18.634zM26.019 20.773L27.946 20.773 26.982 18.634zM39.898 26.591L39.898 26.591 38.029 26.591 37.061 24.507 36.093 26.591 31.96 26.591 31.96 22.288 30.19 26.591 28.247 26.591 26.446 22.209 26.446 26.591 23.286 26.591 23.002 25.714 20.434 25.714 20.152 26.591 16.712 26.591 16.712 20.532 20.238 20.532 21.172 22.797 22.104 20.532 25.921 20.532 25.921 21.805 26.116 21.412 27.414 20.532 31.96 20.532 31.96 21.805 32.154 21.412 33.453 20.532 35.211 20.532 39.897 26.589z"/>
+  <path fill="#1976D2" d="M38.395 25.698L40.258 25.698 38.327 23.13 38.395 25.698zM27.945 21.425L29.839 25.698 31.188 25.698 29.302 21.425z"/>
+  <path fill="#1976D2" d="M31.187 25.698L33.121 25.698 33.121 24.086 34.59 24.086 34.59 22.838 33.121 22.838 33.121 21.425 31.734 21.425 30.117 23.525 31.187 25.698zM21.719 21.425L20 24.456 21.719 24.456z"/>
+  <path fill="#1976D2" d="M23.654 21.425L22.322 24.452 24.989 24.452z"/>
+  <path fill="#1976D2" d="M34.591 25.698L36.501 25.698 37.065 24.456 38.393 24.456 38.96 25.698 41.203 25.698 39.094 21.425 37.064 21.425 34.591 25.698z"/>
+</svg>`;
 
 // Make sure to call `loadStripe` outside of a component's render to avoid
 // recreating the `Stripe` object on every render.
@@ -209,9 +227,9 @@ export default function CheckoutPage() {
                 I pagamenti sono gestiti in modo sicuro da Stripe
               </p>
               <div className="flex justify-center mt-3 space-x-4">
-                <img src="/assets/payments/visa.svg" alt="Visa" className="h-8" />
-                <img src="/assets/payments/mastercard.svg" alt="Mastercard" className="h-8" />
-                <img src="/assets/payments/amex.svg" alt="American Express" className="h-8" />
+                <div className="h-8 w-12" dangerouslySetInnerHTML={{__html: visaIcon}} />
+                <div className="h-8 w-12" dangerouslySetInnerHTML={{__html: mastercardIcon}} />
+                <div className="h-8 w-12" dangerouslySetInnerHTML={{__html: amexIcon}} />
               </div>
               <p className="mt-4">
                 Proseguendo, accetti i nostri <a href="#" className="text-blue-600 hover:underline">Termini e Condizioni</a> e la nostra <a href="#" className="text-blue-600 hover:underline">Privacy Policy</a>
