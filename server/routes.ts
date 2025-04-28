@@ -271,7 +271,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const priceId = products.sviluppoPersonale.price.id;
       
       const paymentIntent = await stripe.paymentIntents.create({
-        amount: 400000, // €4000.00
+        amount: 399800, // €3998.00
         currency: "eur",
         automatic_payment_methods: {
           enabled: true,
@@ -279,7 +279,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         metadata: {
           product_id: products.sviluppoPersonale.product.id,
           product_name: "Percorso Formativo in Sviluppo Personale",
-          original_price: "8000"
+          original_price: "7998"
         },
         description: "Percorso Formativo in Sviluppo Personale - Corso completo"
       });
@@ -287,7 +287,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       return res.status(200).json({
         success: true,
         clientSecret: paymentIntent.client_secret,
-        amount: 4000,
+        amount: 3998,
         productName: "Percorso Formativo in Sviluppo Personale"
       });
     } catch (error: any) {
@@ -326,7 +326,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         metadata = {
           product_type: "course",
           product_name: "Percorso Formativo in Sviluppo Personale",
-          original_price: "8000"
+          original_price: "7998"
         };
       }
       

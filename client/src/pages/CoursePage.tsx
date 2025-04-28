@@ -1,22 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useLocation } from "wouter";
 import { CreditCard } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import DynamicHeader from "@/components/DynamicHeader";
 import ExclusiveOfferHero from "@/components/ExclusiveOfferHero";
 import ExclusiveOfferDetails from "@/components/ExclusiveOfferDetails";
-import ExclusiveOfferInquiryForm from "@/components/ExclusiveOfferInquiryForm";
 import ExclusiveOfferTestimonials from "@/components/ExclusiveOfferTestimonials";
 import CourseBioSection from "@/components/CourseBioSection";
 import CourseFaqSection from "@/components/CourseFaqSection";
 import CourseFooter from "@/components/CourseFooter";
-import { CourseActiveCampaignForm } from "@/components/CourseActiveCampaignForm";
 import { isCourseOfferExpired } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
-import { WebinarRegistration } from "@shared/schema";
 
 export default function CoursePage() {
-  const [showForm, setShowForm] = useState(false);
   const [_, navigate] = useLocation();
   const { toast } = useToast();
   
@@ -43,14 +39,11 @@ export default function CoursePage() {
     }
   }, []);
 
-  // Funzione per mostrare il form al posto dell'inquiry form
-  const handleShowForm = () => {
-    setShowForm(true);
-    
-    // Scrolliamo alla sezione del form
-    const formSection = document.getElementById('offerta-esclusiva');
-    if (formSection) {
-      formSection.scrollIntoView({ behavior: 'smooth' });
+  // Funzione per scorrere alla sezione dell'offerta
+  const scrollToOfferSection = () => {
+    const offerSection = document.getElementById('offerta-esclusiva');
+    if (offerSection) {
+      offerSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -59,7 +52,7 @@ export default function CoursePage() {
       <DynamicHeader />
       <main className="flex-grow">
         <ExclusiveOfferHero 
-          onRequestInfo={handleShowForm} 
+          onRequestInfo={scrollToOfferSection} 
           isOfferExpired={isOfferExpired}
           onBuyNow={handleCheckoutClick}
         />
@@ -68,41 +61,37 @@ export default function CoursePage() {
         <CourseBioSection />
         <CourseFaqSection />
         
-        {/* Mostra il form di ActiveCampaign o l'inquiry form */}
-        {showForm ? (
-          <section 
-            className="py-24 px-4 relative" 
-            style={{ backgroundColor: '#0a0a2e' }}
-            id="offerta-esclusiva"
-          >
-            <div className="container relative z-10 max-w-6xl mx-auto">
-              <div className="mb-8 text-center">
-                <h2 className="text-3xl font-bold mb-4 text-white">
-                  Approfitta ora dell'<span className="text-yellow-400">offerta esclusiva</span>
-                </h2>
-              </div>
-              
-              {!isOfferExpired && (
-                <div className="max-w-xl mx-auto mb-8">
-                  <Button 
-                    className="w-full bg-yellow-400 hover:bg-yellow-300 text-[#010133] font-bold text-lg px-6 py-5 rounded-md flex items-center justify-center gap-2 mb-4"
-                    onClick={handleCheckoutClick}
-                  >
-                    <CreditCard className="w-5 h-5" />
-                    ACQUISTA ORA - €3.998
-                  </Button>
-                  <p className="text-center text-gray-300 text-sm">Pagamento sicuro con carta di credito/debito</p>
-                </div>
-              )}
-              
-              <div className="max-w-xl mx-auto">
-                <p className="text-white text-center mb-4">Clicca sul pulsante sopra per procedere al pagamento sicuro</p>
-              </div>
+        {/* Sezione acquisto corso */}
+        <section 
+          className="py-24 px-4 relative" 
+          style={{ backgroundColor: '#0a0a2e' }}
+          id="offerta-esclusiva"
+        >
+          <div className="container relative z-10 max-w-6xl mx-auto">
+            <div className="mb-8 text-center">
+              <h2 className="text-3xl font-bold mb-4 text-white">
+                Approfitta ora dell'<span className="text-yellow-400">offerta esclusiva</span>
+              </h2>
             </div>
-          </section>
-        ) : (
-          <ExclusiveOfferInquiryForm />
-        )}
+            
+            {!isOfferExpired && (
+              <div className="max-w-xl mx-auto mb-8">
+                <Button 
+                  className="w-full bg-yellow-400 hover:bg-yellow-300 text-[#010133] font-bold text-lg px-6 py-5 rounded-md flex items-center justify-center gap-2 mb-4"
+                  onClick={handleCheckoutClick}
+                >
+                  <CreditCard className="w-5 h-5" />
+                  ACQUISTA ORA - €3.998
+                </Button>
+                <p className="text-center text-gray-300 text-sm">Pagamento sicuro con carta di credito/debito</p>
+              </div>
+            )}
+            
+            <div className="max-w-xl mx-auto">
+              <p className="text-white text-center mb-4">Clicca sul pulsante sopra per procedere al pagamento sicuro</p>
+            </div>
+          </div>
+        </section>
       </main>
       <CourseFooter />
     </div>
