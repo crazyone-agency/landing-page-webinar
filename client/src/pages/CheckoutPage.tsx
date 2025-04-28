@@ -9,6 +9,11 @@ import { motion } from "framer-motion";
 import { isSpecialOfferExpired } from '@/lib/utils';
 import { useLocation } from 'wouter';
 
+// Importa le immagini delle carte di credito
+import visaLogo from "/assets/payments/visa.svg";
+import mastercardLogo from "/assets/payments/mastercard.svg";
+import amexLogo from "/assets/payments/amex.svg";
+
 // Make sure to call `loadStripe` outside of a component's render to avoid
 // recreating the `Stripe` object on every render.
 if (!import.meta.env.VITE_STRIPE_PUBLIC_KEY) {
@@ -203,10 +208,10 @@ export default function CheckoutPage() {
                 </svg>
                 I pagamenti sono gestiti in modo sicuro da Stripe
               </p>
-              <div className="flex justify-center mt-3 space-x-2">
-                <img src="https://cdn.jsdelivr.net/gh/Sooova/Payment-Logos/Rounded/Visa.svg" alt="Visa" className="h-6" />
-                <img src="https://cdn.jsdelivr.net/gh/Sooova/Payment-Logos/Rounded/Mastercard.svg" alt="Mastercard" className="h-6" />
-                <img src="https://cdn.jsdelivr.net/gh/Sooova/Payment-Logos/Rounded/AMEX.svg" alt="American Express" className="h-6" />
+              <div className="flex justify-center mt-3 space-x-4">
+                <img src="/assets/payments/visa.svg" alt="Visa" className="h-8" />
+                <img src="/assets/payments/mastercard.svg" alt="Mastercard" className="h-8" />
+                <img src="/assets/payments/amex.svg" alt="American Express" className="h-8" />
               </div>
               <p className="mt-4">
                 Proseguendo, accetti i nostri <a href="#" className="text-blue-600 hover:underline">Termini e Condizioni</a> e la nostra <a href="#" className="text-blue-600 hover:underline">Privacy Policy</a>
