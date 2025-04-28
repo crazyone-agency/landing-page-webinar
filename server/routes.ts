@@ -10,99 +10,81 @@ if (!process.env.STRIPE_SECRET_KEY) {
 }
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-// Funzione di utilità per creare o aggiornare i prodotti in Stripe
-async function setupStripeProducts() {
+// Funzione di utilità per ottenere prodotti esistenti (senza crearne di nuovi)
+async function getStripeProducts() {
   try {
-    console.log("Configurazione prodotti Stripe...");
+    console.log("Recupero prodotti Stripe esistenti...");
     
-    // Prodotto 1: Smart Revolution Sprint (€37)
-    let smartRevolutionProduct;
-    const smartRevolutionProductsSearch = await stripe.products.search({
-      query: "name:'Smart Revolution Sprint'",
+    // Smart Revolution Sprint: Recupera il primo prodotto attivo
+    const smartRevolutionProducts = await stripe.products.list({
+      active: true,
+      limit: 100
     });
     
-    if (smartRevolutionProductsSearch.data.length > 0) {
-      smartRevolutionProduct = smartRevolutionProductsSearch.data[0];
-      console.log("Prodotto Smart Revolution Sprint già esistente:", smartRevolutionProduct.id);
-    } else {
-      smartRevolutionProduct = await stripe.products.create({
-        name: "Smart Revolution Sprint",
-        description: "Workshop di 60 minuti con Salvatore Garufi",
-        images: ["https://sgpeople.it/wp-content/uploads/2024/11/Foto-Ufficiale.png"],
-        metadata: {
-          type: "workshop",
-          durationMinutes: "60"
-        }
-      });
-      console.log("Nuovo prodotto Smart Revolution Sprint creato:", smartRevolutionProduct.id);
+    let smartRevolutionProduct = null;
+    for (const product of smartRevolutionProducts.data) {
+      if (product.name.includes("Smart Revolution Sprint")) {
+        smartRevolutionProduct = product;
+        console.log("Prodotto Smart Revolution Sprint trovato:", product.id);
+        break;
+      }
     }
     
-    // Creare/Aggiornare il prezzo del prodotto
-    let smartRevolutionPrice;
+    if (!smartRevolutionProduct) {
+      throw new Error("Prodotto Smart Revolution Sprint non trovato in Stripe");
+    }
+    
+    // Recupera il prezzo del prodotto workshop
     const smartRevolutionPrices = await stripe.prices.list({
       product: smartRevolutionProduct.id,
       active: true,
     });
     
-    if (smartRevolutionPrices.data.length > 0) {
-      smartRevolutionPrice = smartRevolutionPrices.data[0];
-      console.log("Prezzo Smart Revolution Sprint già esistente:", smartRevolutionPrice.id);
-    } else {
-      smartRevolutionPrice = await stripe.prices.create({
-        product: smartRevolutionProduct.id,
-        unit_amount: 3700, // €37 in centesimi
-        currency: 'eur',
-      });
-      console.log("Nuovo prezzo Smart Revolution Sprint creato:", smartRevolutionPrice.id);
+    if (smartRevolutionPrices.data.length === 0) {
+      throw new Error("Nessun prezzo attivo trovato per Smart Revolution Sprint");
     }
     
-    // Prodotto 2: Percorso Formativo in Sviluppo Personale (€4.000)
-    let sviluppoPersonaleProduct;
-    const sviluppoPersonaleProductsSearch = await stripe.products.search({
-      query: "name:'Percorso Formativo in Sviluppo Personale'",
+    const smartRevolutionPrice = smartRevolutionPrices.data[0];
+    console.log("Prezzo Smart Revolution Sprint:", smartRevolutionPrice.id);
+    
+    // Percorso Formativo in Sviluppo Personale: Recupera il primo prodotto attivo
+    const formativoProducts = await stripe.products.list({
+      active: true,
+      limit: 100
     });
     
-    if (sviluppoPersonaleProductsSearch.data.length > 0) {
-      sviluppoPersonaleProduct = sviluppoPersonaleProductsSearch.data[0];
-      console.log("Prodotto Percorso Formativo già esistente:", sviluppoPersonaleProduct.id);
-    } else {
-      sviluppoPersonaleProduct = await stripe.products.create({
-        name: "Percorso Formativo in Sviluppo Personale",
-        description: "Percorso formativo completo con Salvatore Garufi",
-        images: ["https://sgpeople.it/wp-content/uploads/2024/11/Foto-Ufficiale.png"],
-        metadata: {
-          type: "corso",
-          discountedFrom: "8000"
-        }
-      });
-      console.log("Nuovo prodotto Percorso Formativo creato:", sviluppoPersonaleProduct.id);
+    let sviluppoPersonaleProduct = null;
+    for (const product of formativoProducts.data) {
+      if (product.name.includes("Percorso Formativo")) {
+        sviluppoPersonaleProduct = product;
+        console.log("Prodotto Percorso Formativo trovato:", product.id);
+        break;
+      }
     }
     
-    // Creare/Aggiornare il prezzo del prodotto
-    let sviluppoPersonalePrice;
+    if (!sviluppoPersonaleProduct) {
+      throw new Error("Prodotto Percorso Formativo non trovato in Stripe");
+    }
+    
+    // Recupera il prezzo del prodotto corso
     const sviluppoPersonalePrices = await stripe.prices.list({
       product: sviluppoPersonaleProduct.id,
       active: true,
     });
     
-    if (sviluppoPersonalePrices.data.length > 0) {
-      sviluppoPersonalePrice = sviluppoPersonalePrices.data[0];
-      console.log("Prezzo Percorso Formativo già esistente:", sviluppoPersonalePrice.id);
-    } else {
-      sviluppoPersonalePrice = await stripe.prices.create({
-        product: sviluppoPersonaleProduct.id,
-        unit_amount: 400000, // €4000 in centesimi
-        currency: 'eur',
-      });
-      console.log("Nuovo prezzo Percorso Formativo creato:", sviluppoPersonalePrice.id);
+    if (sviluppoPersonalePrices.data.length === 0) {
+      throw new Error("Nessun prezzo attivo trovato per Percorso Formativo");
     }
+    
+    const sviluppoPersonalePrice = sviluppoPersonalePrices.data[0];
+    console.log("Prezzo Percorso Formativo:", sviluppoPersonalePrice.id);
     
     return {
       smartRevolution: { product: smartRevolutionProduct, price: smartRevolutionPrice },
       sviluppoPersonale: { product: sviluppoPersonaleProduct, price: sviluppoPersonalePrice }
     };
   } catch (error) {
-    console.error("Errore durante la configurazione dei prodotti Stripe:", error);
+    console.error("Errore durante il recupero dei prodotti Stripe:", error);
     throw error;
   }
 }
@@ -110,7 +92,7 @@ async function setupStripeProducts() {
 export async function registerRoutes(app: Express): Promise<Server> {
   // Inizializza i prodotti Stripe
   try {
-    await setupStripeProducts();
+    await getStripeProducts();
   } catch (error) {
     console.error("Errore inizializzazione Stripe:", error);
   }
@@ -217,7 +199,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Endpoint per ottenere prodotti e prezzi da Stripe
   app.get("/api/stripe/products", async (_req, res) => {
     try {
-      const products = await setupStripeProducts();
+      const products = await getStripeProducts();
       return res.status(200).json({
         success: true,
         data: {
@@ -250,7 +232,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // API per creare un pagamento Smart Revolution Sprint
   app.post("/api/checkout/workshop", async (_req, res) => {
     try {
-      const products = await setupStripeProducts();
+      const products = await getStripeProducts();
       const priceId = products.smartRevolution.price.id;
       
       const paymentIntent = await stripe.paymentIntents.create({
@@ -285,7 +267,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // API per creare un pagamento Percorso Formativo
   app.post("/api/checkout/course", async (_req, res) => {
     try {
-      const products = await setupStripeProducts();
+      const products = await getStripeProducts();
       const priceId = products.sviluppoPersonale.price.id;
       
       const paymentIntent = await stripe.paymentIntents.create({

@@ -29,7 +29,7 @@ export default function OtoPage() {
       title: "Redirect al pagamento",
       description: "Ti stiamo reindirizzando alla pagina di pagamento",
     });
-    navigate("/checkout");
+    navigate("/checkout?product=workshop");
   };
   
   return (
