@@ -82,19 +82,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      
-      {/* Pulsante di prenotazione fluttuante */}
-      <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50">
-        <a 
-          href="#registration"
-          className="bg-[#F8C112] hover:bg-yellow-400 text-[#010133] font-bold py-3 px-6 rounded-full shadow-lg flex items-center transition-all transform hover:scale-105"
-        >
-          <span>Riserva il tuo posto</span>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-            <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-          </svg>
-        </a>
-      </div>
     </footer>
   );
 }

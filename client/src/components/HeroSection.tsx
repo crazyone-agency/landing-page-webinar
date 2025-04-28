@@ -3,6 +3,13 @@ import { Link } from "wouter";
 import CountdownTimer from "./CountdownTimer";
 import { webinarDate } from "@/lib/utils";
 
+const scrollToRegister = () => {
+  const registerSection = document.getElementById('register-now');
+  if (registerSection) {
+    registerSection.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
 export default function HeroSection() {
   return (
     <section className="bg-[#010133] text-white py-12 md:py-20 relative overflow-hidden">
@@ -64,11 +71,11 @@ export default function HeroSection() {
               Il webinar gratuito dove Salvatore Garufi ti insegna il protocollo neuroscientifico per battere la procrastinazione e l'overload mentale, un piccolo passo alla volta.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-6">
-              <Link href="#register-now">
+              <button onClick={scrollToRegister}>
                 <span className="inline-block w-full bg-[#F8C112] hover:bg-yellow-500 transition duration-300 text-[#010133] font-bold px-6 py-3 rounded-md text-center shadow-lg animate-pulse-slow cursor-pointer">
                   Riserva il Tuo Posto Gratuito Ora!
                 </span>
-              </Link>
+              </button>
               <div className="flex items-center gap-2 bg-white bg-opacity-10 px-4 py-3 rounded-md">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#F8C112]" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />

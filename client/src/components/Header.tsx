@@ -1,5 +1,12 @@
 import { Link } from "wouter";
 
+const scrollToRegister = () => {
+  const registerSection = document.getElementById('register-now');
+  if (registerSection) {
+    registerSection.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
 export default function Header() {
   return (
     <header className="bg-white shadow-sm">
@@ -24,11 +31,11 @@ export default function Header() {
             </span>
           </Link>
           
-          <Link href="#register-now">
+          <button onClick={scrollToRegister}>
             <span className="hidden md:block bg-[#F8C112] hover:bg-yellow-500 transition duration-300 text-[#010133] font-medium px-4 py-2 rounded-md shadow-sm cursor-pointer">
               Riserva il tuo posto
             </span>
-          </Link>
+          </button>
         </div>
       </div>
     </header>
