@@ -78,27 +78,27 @@ export default function SocialProofSection() {
             </div>
           </motion.div>
           
-          <motion.div 
+          <motion.div
             className="mt-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <h3 className="text-center font-semibold mb-6">Aziende che si sono affidate a SG People Group</h3>
+            <h3 className="text-center font-semibold mb-6">I settori che hanno beneficiato del contributo di SG People Group</h3>
             <div className="flex flex-wrap justify-center gap-8 opacity-70">
               {/* Company logos would go here, using gray boxes with text as placeholders */}
               <div className="w-24 h-12 bg-gray-200 rounded flex items-center justify-center">
-                <span className="text-xs text-gray-500">Azienda 1</span>
+                <span className="text-xs text-gray-500">Settore 1</span>
               </div>
               <div className="w-24 h-12 bg-gray-200 rounded flex items-center justify-center">
-                <span className="text-xs text-gray-500">Azienda 2</span>
+                <span className="text-xs text-gray-500">Settore 2</span>
               </div>
               <div className="w-24 h-12 bg-gray-200 rounded flex items-center justify-center">
-                <span className="text-xs text-gray-500">Azienda 3</span>
+                <span className="text-xs text-gray-500">Settore 3</span>
               </div>
               <div className="w-24 h-12 bg-gray-200 rounded flex items-center justify-center">
-                <span className="text-xs text-gray-500">Azienda 4</span>
+                <span className="text-xs text-gray-500">Settore 4</span>
               </div>
             </div>
           </motion.div>
