@@ -76,7 +76,7 @@ export default function DynamicHeader() {
           
           <div>
             <Button 
-              className="bg-yellow-400 text-blue-900 hover:bg-yellow-300 transition-all duration-300 hidden md:block"
+              className="bg-yellow-400 text-blue-950 text-base hover:bg-yellow-300 transition-all duration-300 hidden md:block"
               onClick={scrollToInquiry}
             >
               Richiedi Info

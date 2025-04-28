@@ -65,7 +65,7 @@ export default function ExclusiveOfferHero({ onRequestInfo, isOfferExpired = fal
             transition={{ duration: 0.8 }}
             className="text-center lg:text-left"
           >
-            <div className="inline-block px-4 py-2 mb-6 rounded-full bg-yellow-400 text-blue-900 font-medium">
+            <div className="inline-block px-4 py-2 mb-6 rounded-full bg-yellow-400 text-blue-950 font-medium">
               {isOfferExpired ? "Percorso Formativo Completo" : "Offerta Esclusiva Post-Webinar"}
             </div>
             
@@ -107,7 +107,7 @@ export default function ExclusiveOfferHero({ onRequestInfo, isOfferExpired = fal
             <div className="flex flex-col md:flex-row gap-4 justify-center lg:justify-start">
               <Button 
                 size="lg" 
-                className="bg-yellow-400 text-blue-900 hover:bg-yellow-300 font-semibold px-8 py-6 text-lg" 
+                className="bg-yellow-400 text-blue-950 hover:bg-yellow-300 font-semibold px-8 py-6 text-lg"
                 onClick={scrollToInquiry}
               >
                 {!isOfferExpired ? "SCOPRI L'OFFERTA" : "RICHIEDI INFORMAZIONI"}
@@ -116,7 +116,7 @@ export default function ExclusiveOfferHero({ onRequestInfo, isOfferExpired = fal
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-yellow-400 text-yellow-400 hover:bg-yellow-400/10 font-semibold px-8 py-6 text-lg" 
+                className="border-yellow-400 text-yellow-600 hover:bg-yellow-100/50 hover:text-white font-semibold px-8 py-6 text-lg transition-all"
               >
                 VEDI I DETTAGLI DEL CORSO
               </Button>
