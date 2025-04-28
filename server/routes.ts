@@ -224,14 +224,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
           smartRevolution: {
             productId: products.smartRevolution.product.id,
             priceId: products.smartRevolution.price.id,
-            amount: products.smartRevolution.price.unit_amount / 100, // Converti da centesimi a euro
+            amount: (products.smartRevolution.price.unit_amount || 3700) / 100, // Converti da centesimi a euro
             name: products.smartRevolution.product.name,
             description: products.smartRevolution.product.description
           },
           sviluppoPersonale: {
             productId: products.sviluppoPersonale.product.id,
             priceId: products.sviluppoPersonale.price.id,
-            amount: products.sviluppoPersonale.price.unit_amount / 100, // Converti da centesimi a euro
+            amount: (products.sviluppoPersonale.price.unit_amount || 400000) / 100, // Converti da centesimi a euro
             name: products.sviluppoPersonale.product.name,
             description: products.sviluppoPersonale.product.description
           }

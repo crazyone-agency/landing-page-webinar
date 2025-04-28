@@ -31,10 +31,19 @@ const CheckoutForm = () => {
 
     setIsSubmitting(true);
 
+    // Determina l'URL di ritorno in base al prodotto
+    const searchParams = new URLSearchParams(window.location.search);
+    const productType = searchParams.get('product') || 'workshop';
+    
+    let returnUrl = `${window.location.origin}/offerta-speciale?payment=success`;
+    if (productType === 'course') {
+      returnUrl = `${window.location.origin}/corso-sviluppo-personale?payment=success`;
+    }
+    
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: `${window.location.origin}/offerta-speciale?payment=success`,
+        return_url: returnUrl,
       },
     });
 
@@ -66,27 +75,41 @@ export default function CheckoutPage() {
   const [clientSecret, setClientSecret] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [amount, setAmount] = useState(37);
+  const [productName, setProductName] = useState("Smart Revolution Sprint");
   const { toast } = useToast();
   
   const isExpired = isSpecialOfferExpired();
+  const searchParams = new URLSearchParams(window.location.search);
+  const productType = searchParams.get('product') || 'workshop';
   
   useEffect(() => {
     // Se l'offerta è scaduta, aggiorna il prezzo a quello intero
-    if (isExpired) {
+    if (isExpired && productType === 'workshop') {
       setAmount(397);
+    }
+    
+    // Usa l'endpoint specifico per il tipo di prodotto
+    let endpoint = "/api/checkout/workshop"; // Default
+    
+    if (productType === 'course') {
+      endpoint = "/api/checkout/course";
+      setProductName("Percorso Formativo in Sviluppo Personale");
+      setAmount(4000);
     }
     
     // Create PaymentIntent as soon as the page loads
     setIsLoading(true);
-    apiRequest("POST", "/api/create-payment-intent", { amount })
+    apiRequest("POST", endpoint)
       .then((res) => res.json())
       .then((data) => {
-        if (data.clientSecret) {
+        if (data.success && data.clientSecret) {
           setClientSecret(data.clientSecret);
+          if (data.amount) setAmount(data.amount);
+          if (data.productName) setProductName(data.productName);
         } else {
           toast({
             title: "Errore",
-            description: "Impossibile inizializzare il pagamento. Riprova più tardi.",
+            description: data.message || "Impossibile inizializzare il pagamento. Riprova più tardi.",
             variant: "destructive",
           });
         }
@@ -102,7 +125,7 @@ export default function CheckoutPage() {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [amount, isExpired, toast]);
+  }, [productType, isExpired, toast]);
 
   const [_, navigate] = useLocation();
   
@@ -138,16 +161,23 @@ export default function CheckoutPage() {
             
             <div className="border bg-gray-50 rounded-lg p-4 mb-6">
               <div className="flex justify-between items-center mb-2">
-                <h2 className="text-lg font-semibold text-[#010133]">Smart Revolution Sprint</h2>
-                <span className="font-bold text-lg text-[#010133]">€{amount}</span>
+                <h2 className="text-lg font-semibold text-[#010133]" data-accent-fix>{productName}</h2>
+                <span className="font-bold text-lg text-[#010133]">€{amount.toLocaleString('it-IT')}</span>
               </div>
-              <p className="text-gray-600 text-sm">
-                Workshop esclusivo di 60 minuti con Salvatore Garufi
+              <p className="text-gray-600 text-sm" data-accent-fix>
+                {productType === 'workshop' 
+                  ? "Workshop esclusivo di 60 minuti con Salvatore Garufi" 
+                  : "Percorso formativo completo con Salvatore Garufi"}
               </p>
               
-              {!isExpired && (
+              {(productType === 'workshop' && !isExpired) && (
                 <div className="mt-2 bg-green-50 text-green-700 px-3 py-1 rounded-md text-xs inline-block">
                   Prezzo speciale
+                </div>
+              )}
+              {(productType === 'course') && (
+                <div className="mt-2 bg-green-50 text-green-700 px-3 py-1 rounded-md text-xs inline-block">
+                  Sconto 50% sul prezzo originale di €8.000
                 </div>
               )}
             </div>
