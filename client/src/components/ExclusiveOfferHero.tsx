@@ -156,7 +156,7 @@ export default function ExclusiveOfferHero({ onRequestInfo, isOfferExpired = fal
                   
                   <div className="mb-6">
                     <div className="text-yellow-400 text-xl mb-1">Prezzo speciale -50%</div>
-                    <div className="text-6xl font-bold text-yellow-400">€4000</div>
+                    <div className="text-6xl font-bold text-yellow-400">€3998</div>
                     <div className="text-gray-300 text-sm">IVA inclusa</div>
                   </div>
                 </>

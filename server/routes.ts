@@ -89,10 +89,52 @@ async function getStripeProducts() {
   }
 }
 
+// Funzione per aggiornare i prodotti Stripe
+async function updateStripePrices() {
+  try {
+    const products = await getStripeProducts();
+    
+    // Aggiorna il prezzo del corso formativo se è impostato a €4000 invece che €3998
+    if (products.sviluppoPersonale.price.unit_amount === 400000) {
+      console.log("Aggiornamento prezzo per il Percorso Formativo da €4000 a €3998...");
+      
+      // Archivio il vecchio prezzo
+      await stripe.prices.update(products.sviluppoPersonale.price.id, {
+        active: false
+      });
+      
+      // Creo un nuovo prezzo
+      const newPrice = await stripe.prices.create({
+        product: products.sviluppoPersonale.product.id,
+        unit_amount: 399800, // €3998.00
+        currency: 'eur',
+        metadata: {
+          original_price: "7998"
+        }
+      });
+      
+      console.log("Nuovo prezzo creato:", newPrice.id);
+      return true;
+    } else {
+      console.log("Il prezzo del Percorso Formativo è già corretto");
+      return false;
+    }
+  } catch (error) {
+    console.error("Errore nell'aggiornamento dei prezzi Stripe:", error);
+    return false;
+  }
+}
+
 export async function registerRoutes(app: Express): Promise<Server> {
   // Inizializza i prodotti Stripe
   try {
     await getStripeProducts();
+    
+    // Aggiorna i prezzi se necessario
+    const updated = await updateStripePrices();
+    if (updated) {
+      console.log("Prezzi Stripe aggiornati con successo!");
+    }
   } catch (error) {
     console.error("Errore inizializzazione Stripe:", error);
   }
