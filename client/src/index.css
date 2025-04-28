@@ -1,12 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap');
 @import url('https://fonts.cdnfonts.com/css/futura-pt');
+@import url('https://fonts.bunny.net/css?family=ibm-plex-sans:400,700');
 
 * {
   box-sizing: border-box;
+  font-variant-ligatures: none;
+  font-variant-caps: normal;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  font-family: 'Futura PT', Futura, sans-serif;
+  font-family: 'IBM Plex Sans', 'Futura PT', Futura, sans-serif;
   font-size: 1.4rem;
   font-weight: 400;
   line-height: 1.5;
@@ -67,15 +74,27 @@ body {
 @layer base {
   * {
     @apply border-border;
+    font-variant-ligatures: none;
+    font-variant-caps: normal;
+    font-synthesis: none;
   }
 
   body {
     @apply antialiased bg-background text-foreground;
-    font-family: 'Futura PT', Futura, 'Inter', sans-serif;
+    font-family: 'IBM Plex Sans', 'Futura PT', Futura, 'Inter', sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Futura PT', Futura, 'Poppins', sans-serif;
+    font-family: 'IBM Plex Sans', 'Futura PT', Futura, 'Poppins', sans-serif;
+  }
+  
+  /* Specifica che i caratteri accentati non devono essere visualizzati in grassetto */
+  i, em, b, strong, span, p, a, div, button, input, textarea, select, option, label, li {
+    font-variation-settings: normal;
+    font-feature-settings: normal;
   }
 }
 

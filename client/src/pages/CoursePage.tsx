@@ -96,7 +96,7 @@ export default function CoursePage() {
               )}
               
               <div className="max-w-xl mx-auto">
-                <CourseActiveCampaignForm />
+                <p className="text-white text-center mb-4">Clicca sul pulsante sopra per procedere al pagamento sicuro</p>
               </div>
             </div>
           </section>
