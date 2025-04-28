@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { cn, isSpecialOfferExpired } from "@/lib/utils";
-import { OtoActiveCampaignForm } from "@/components/OtoActiveCampaignForm";
 import PriceDisplay from "@/components/PriceDisplay";
 import SpecialOfferCountdown from "@/components/SpecialOfferCountdown";
 import { useToast } from "@/hooks/use-toast";
@@ -70,11 +69,6 @@ export default function OtoPage() {
                 Acquista Ora
               </Button>
               <p className="mt-3 text-sm text-gray-300">Pagamento sicuro con carta di credito/debito</p>
-            </div>
-            
-            {/* ActiveCampaign Form */}
-            <div className="max-w-xl mx-auto">
-              <OtoActiveCampaignForm />
             </div>
           </div>
           
@@ -283,11 +277,6 @@ export default function OtoPage() {
                 Acquista Ora
               </Button>
               <p className="mt-3 text-sm text-gray-300">Pagamento sicuro con carta di credito/debito</p>
-            </div>
-            
-            {/* ActiveCampaign Form */}
-            <div className="max-w-xl mx-auto">
-              <OtoActiveCampaignForm />
             </div>
           </div>
           

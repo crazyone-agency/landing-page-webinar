@@ -145,7 +145,7 @@ export default function CourseBioSection() {
             
             <div className="mt-8 grid grid-cols-2 gap-4">
               <div className="bg-blue-900/40 p-4 rounded-lg border border-blue-800/60">
-                <div className="text-yellow-400 font-bold text-2xl">10.000+</div>
+                <div className="text-yellow-400 font-bold text-2xl">1200+</div>
                 <div className="text-gray-300">Professionisti formati</div>
               </div>
               <div className="bg-blue-900/40 p-4 rounded-lg border border-blue-800/60">
