@@ -193,7 +193,7 @@ export default function CourseFooter() {
         
         <div className="mt-12 pt-8 border-t border-blue-800/40 text-center">
           <p className="text-gray-400">
-            © {currentYear} SG People Group. Tutti i diritti riservati.
+            © {currentYear} SG People Group - H.B.D. Srl | P.IVA: IT 04539190167
           </p>
           <div className="mt-2 flex justify-center space-x-4 text-sm">
             <a 
