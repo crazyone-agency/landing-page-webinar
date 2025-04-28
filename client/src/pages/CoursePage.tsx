@@ -28,7 +28,7 @@ export default function CoursePage() {
       title: "Redirect al pagamento",
       description: "Ti stiamo reindirizzando alla pagina di pagamento",
     });
-    navigate("/subscribe");
+    navigate("/checkout?product=course");
   };
   
   // Scroll to top on page load
@@ -39,7 +39,7 @@ export default function CoursePage() {
   // Setup del redirect a Stripe dopo il form
   useEffect(() => {
     if (typeof window.setupStripeRedirect === 'function') {
-      window.setupStripeRedirect('/subscribe');
+      window.setupStripeRedirect('/checkout?product=course');
     }
   }, []);
 

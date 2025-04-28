@@ -186,12 +186,20 @@ export default function OtoPage() {
             
             <PriceDisplay type="course" />
             
-            <div className="text-center">
+            <div className="text-center space-y-4">
               <Link href="/corso-sviluppo-personale">
                 <span className="inline-block bg-white hover:bg-gray-100 text-[#010133] font-bold text-lg px-6 py-3 rounded-md cursor-pointer transition">
                   Scopri di più sul percorso completo
                 </span>
               </Link>
+              <div className="mt-4">
+                <Button 
+                  onClick={() => navigate("/checkout?product=course")}
+                  className="bg-[#F8C112] hover:bg-yellow-500 text-[#010133] font-bold px-6 py-3 rounded-md"
+                >
+                  Acquista ora il percorso - €4.000
+                </Button>
+              </div>
             </div>
           </div>
         </div>
