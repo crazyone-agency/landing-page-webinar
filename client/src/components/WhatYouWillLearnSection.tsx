@@ -24,6 +24,13 @@ export default function WhatYouWillLearnSection() {
     visible: { opacity: 1, y: 0 }
   };
 
+  const scrollToRegister = () => {
+    const registerSection = document.getElementById('register-now');
+    if (registerSection) {
+      registerSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
@@ -119,11 +126,11 @@ export default function WhatYouWillLearnSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            <Link href="#register-now">
+            <button onClick={scrollToRegister}>
               <span className="inline-block bg-[#010133] hover:bg-opacity-90 transition duration-300 text-white font-bold px-8 py-4 rounded-md text-center shadow-md cursor-pointer">
                 Partecipa al Webinar Gratuito
               </span>
-            </Link>
+            </button>
           </motion.div>
         </div>
       </div>
