@@ -169,10 +169,10 @@ export default function CourseFooter() {
                 <div>
                   <p className="text-gray-300">Telefono:</p>
                   <a 
-                    href="tel:+393493023345" 
+                    href="tel:+393206834979" 
                     className="text-white hover:text-yellow-400 transition-colors"
                   >
-                    +39 349 302 3345
+                    +39 320 683 4979
                   </a>
                 </div>
               </li>
@@ -184,7 +184,7 @@ export default function CourseFooter() {
                 </div>
                 <div>
                   <p className="text-gray-300">Indirizzo:</p>
-                  <p className="text-white">Via Gattamelata 60, 20149 Milano (MI)</p>
+                  <p className="text-white">Via Mazzini 1, 24019 Bergamo (BG)</p>
                 </div>
               </li>
             </ul>

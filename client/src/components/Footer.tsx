@@ -37,11 +37,11 @@ export default function Footer() {
                   </li>
                   <li className="flex items-center">
                     <Phone size={14} className="mr-2" />
-                    <a href="tel:+390294756940" className="hover:text-[#F8C112]">+39 02 9475 6940</a>
+                    <a href="tel:+393206834979" className="hover:text-[#F8C112]">+39 320 683 4979</a>
                   </li>
                   <li className="flex items-center">
                     <MapPin size={14} className="mr-2" />
-                    <span>Milano, Italia</span>
+                    <span>Via Mazzini 1, 24019 Bergamo (BG)</span>
                   </li>
                 </ul>
               </div>
@@ -67,7 +67,7 @@ export default function Footer() {
           </div>
           
           <div className="border-t border-gray-700 pt-6 text-center text-sm text-gray-400">
-            <p>&copy; {new Date().getFullYear()} SG People Group. Tutti i diritti riservati.</p>
+            <p>&copy; {new Date().getFullYear()} SG People Group - H.B.D. Srl | P.IVA: IT 04539190167</p>
             <div className="mt-2 space-x-4">
               <Link href="#privacy">
                 <span className="hover:text-white transition-colors cursor-pointer">Privacy Policy</span>
