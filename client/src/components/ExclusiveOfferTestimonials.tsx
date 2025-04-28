@@ -4,7 +4,8 @@ import { testimonials, brandColors } from "@/lib/course-utils";
 
 export default function ExclusiveOfferTestimonials() {
   return (
-    <section 
+    <section
+      id="testimonianze"
       className="py-24 px-4 relative overflow-hidden" 
       style={{ backgroundColor: '#10102f' }}
     >
