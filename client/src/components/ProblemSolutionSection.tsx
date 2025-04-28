@@ -56,7 +56,7 @@ export default function ProblemSolutionSection() {
             <div className="flex items-center justify-center bg-[#010133] bg-opacity-5 rounded-xl p-6 border border-[#010133] border-opacity-20">
               <div className="mr-6">
                 <img 
-                  src="https://sgpeople.it/wp-content/uploads/2024/06/brain-science.jpg" 
+                  src="https://sgpeople.it/wp-content/uploads/2025/01/Brain-Comunicazione-Smart.png"
                   alt="Neuroscience concept" 
                   className="rounded-lg w-24 h-24 object-cover shadow-md"
                 />
