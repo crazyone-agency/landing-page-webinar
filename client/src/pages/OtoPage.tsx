@@ -34,8 +34,6 @@ export default function OtoPage() {
   
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
-      
       {/* Hero Section */}
       <section className="relative bg-[#010133] text-white pt-24 pb-16 px-4">
         <div className="container mx-auto max-w-6xl">
