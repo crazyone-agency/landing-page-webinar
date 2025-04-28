@@ -56,13 +56,20 @@ export default function ProblemSolutionSection() {
             <div className="flex items-center justify-center bg-[#010133] bg-opacity-5 rounded-xl p-6 border border-[#010133] border-opacity-20">
               <div className="mr-6">
                 <img 
-                  src="https://images.unsplash.com/photo-1559757175-7b06c6dfa3e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                  src="https://sgpeople.it/wp-content/uploads/2024/06/brain-science.jpg" 
                   alt="Neuroscience concept" 
                   className="rounded-lg w-24 h-24 object-cover shadow-md"
                 />
               </div>
               <div className="text-left">
-                <h3 className="font-semibold text-[#010133]">La Scienza delle Micro-Azioni Rivelata</h3>
+                <h3 className="font-semibold text-[#010133]">
+                  <span className="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-5 h-5 mr-2 text-[#F8C112]">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
+                    La Scienza delle Piccole Azioni Rivelata
+                  </span>
+                </h3>
                 <p className="text-sm text-gray-600 mt-1">Basato su principi di neuroscienze e psicologia comportamentale, comprovati da studi scientifici.</p>
               </div>
             </div>

@@ -61,7 +61,7 @@ export default function HeroSection() {
               <span className="text-[#F8C112]">5 Minuti al Giorno</span>
             </h1>
             <p className="text-lg md:text-xl mb-6 text-gray-200">
-              Il webinar gratuito dove Salvatore Garufi ti insegna il protocollo neuroscientifico per battere la procrastinazione e l'overload mentale, un micro-passo alla volta.
+              Il webinar gratuito dove Salvatore Garufi ti insegna il protocollo neuroscientifico per battere la procrastinazione e l'overload mentale, un piccolo passo alla volta.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-6">
               <Link href="#register-now">
@@ -78,17 +78,26 @@ export default function HeroSection() {
             </div>
             <div className="flex items-center gap-3">
               <div className="flex -space-x-2">
-                <div className="w-8 h-8 rounded-full bg-gray-300 border-2 border-[#010133] flex items-center justify-center text-xs">
-                  <span>1</span>
+                <div className="w-8 h-8 rounded-full bg-blue-400 border-2 border-[#010133] flex items-center justify-center overflow-hidden">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-white">
+                    <path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clipRule="evenodd" />
+                  </svg>
                 </div>
-                <div className="w-8 h-8 rounded-full bg-gray-400 border-2 border-[#010133] flex items-center justify-center text-xs">
-                  <span>2</span>
+                <div className="w-8 h-8 rounded-full bg-green-400 border-2 border-[#010133] flex items-center justify-center overflow-hidden">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-white">
+                    <path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clipRule="evenodd" />
+                  </svg>
                 </div>
-                <div className="w-8 h-8 rounded-full bg-gray-500 border-2 border-[#010133] flex items-center justify-center text-xs">
-                  <span>3</span>
+                <div className="w-8 h-8 rounded-full bg-purple-400 border-2 border-[#010133] flex items-center justify-center overflow-hidden">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-white">
+                    <path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clipRule="evenodd" />
+                  </svg>
                 </div>
               </div>
-              <p className="text-sm text-gray-200">
+              <p className="text-sm text-gray-200 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 mr-1 text-[#F8C112]">
+                  <path d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM17.25 19.128l-.001.144a2.25 2.25 0 01-.233.96 10.088 10.088 0 005.06-1.01.75.75 0 00.42-.643 4.875 4.875 0 00-6.957-4.611 8.586 8.586 0 011.71 5.157v.003z" />
+                </svg>
                 Più di <span className="font-bold">1200+ professionisti</span> già formati con il metodo SG People
               </p>
             </div>
@@ -102,7 +111,7 @@ export default function HeroSection() {
             <div className="relative">
               <div className="absolute -inset-1 bg-[#F8C112] rounded-lg blur-sm"></div>
               <img 
-                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                src="https://sgpeople.it/wp-content/uploads/2024/11/Foto-Ufficiale.png" 
                 alt="Salvatore Garufi - Professional Speaker" 
                 className="relative rounded-lg w-full max-w-md mx-auto shadow-xl"
               />
