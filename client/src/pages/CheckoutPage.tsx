@@ -144,8 +144,6 @@ export default function CheckoutPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#010133]">
-      <Header />
-      
       <div className="flex-grow py-20 px-4">
         <div className="container mx-auto max-w-3xl">
           <motion.div
