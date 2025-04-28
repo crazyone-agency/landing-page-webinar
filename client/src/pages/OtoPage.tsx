@@ -197,7 +197,7 @@ export default function OtoPage() {
                   onClick={() => navigate("/checkout?product=course")}
                   className="bg-[#F8C112] hover:bg-yellow-500 text-[#010133] font-bold px-6 py-3 rounded-md"
                 >
-                  Acquista ora il percorso - €4.000
+                  Acquista ora il percorso - €3.998
                 </Button>
               </div>
             </div>

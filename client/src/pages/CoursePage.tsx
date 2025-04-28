@@ -89,7 +89,7 @@ export default function CoursePage() {
                     onClick={handleCheckoutClick}
                   >
                     <CreditCard className="w-5 h-5" />
-                    ACQUISTA ORA - €4.000
+                    ACQUISTA ORA - €3.998
                   </Button>
                   <p className="text-center text-gray-300 text-sm">Pagamento sicuro con carta di credito/debito</p>
                 </div>

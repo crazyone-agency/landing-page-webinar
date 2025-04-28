@@ -141,7 +141,7 @@ export default function ExclusiveOfferHero({ onRequestInfo, isOfferExpired = fal
               {isOfferExpired ? (
                 <div className="mb-6">
                   <div className="text-white text-lg mb-1">Prezzo del corso</div>
-                  <div className="text-6xl font-bold text-yellow-400">€8.000</div>
+                  <div className="text-6xl font-bold text-yellow-400">€7.998</div>
                   <div className="text-gray-300 text-sm">IVA inclusa</div>
                 </div>
               ) : (
@@ -149,7 +149,7 @@ export default function ExclusiveOfferHero({ onRequestInfo, isOfferExpired = fal
                   <div className="mb-6">
                     <div className="text-white text-lg mb-1">Prezzo originale</div>
                     <div className="text-4xl font-bold text-white relative inline-block">
-                      €8000
+                      €7998
                       <div className="h-1 bg-red-500 absolute top-1/2 -left-2 w-[calc(100%+16px)] transform rotate-12"></div>
                     </div>
                   </div>
