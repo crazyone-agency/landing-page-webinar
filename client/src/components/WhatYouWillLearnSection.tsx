@@ -58,7 +58,7 @@ export default function WhatYouWillLearnSection() {
                 </div>
               </div>
               <div>
-                <h3 className="font-semibold text-lg mb-2">Identificare le 3 micro-azioni più potenti per la TUA situazione</h3>
+                <h3 className="font-semibold text-lg mb-2">Identificare le 3 piccole azioni più potenti per la TUA situazione</h3>
                 <p className="text-gray-600">Imparerai a selezionare le piccole abitudini che avranno l'impatto più significativo sui tuoi risultati personali.</p>
               </div>
             </motion.div>

@@ -39,7 +39,7 @@ export default function HowItWorksSection() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg">Data e Ora</h3>
-                  <p>3 Maggio 2023, ore 18:30</p>
+                  <p>10 Maggio 2025, ore 10:00</p>
                 </div>
               </div>
               
