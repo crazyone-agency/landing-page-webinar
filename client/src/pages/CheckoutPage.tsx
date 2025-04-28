@@ -214,7 +214,7 @@ export default function CheckoutPage() {
                 <div className="h-8 w-12" dangerouslySetInnerHTML={{__html: amexIcon}} />
               </div>
               <p className="mt-4">
-                Proseguendo, accetti i nostri <a href="#" className="text-blue-600 hover:underline">Termini e Condizioni</a> e la nostra <a href="#" className="text-blue-600 hover:underline">Privacy Policy</a>
+                Proseguendo, accetti i nostri <a href="https://sgpeople.it/privacy-policy/" className="text-blue-600 hover:underline">Termini e Condizioni</a> e la nostra <a href="https://sgpeople.it/privacy-policy/" className="text-blue-600 hover:underline">Privacy Policy</a>
               </p>
             </div>
           </motion.div>
