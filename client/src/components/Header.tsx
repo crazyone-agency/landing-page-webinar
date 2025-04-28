@@ -25,12 +25,6 @@ export default function Header() {
         </div>
         
         <div className="flex items-center space-x-6">
-          <Link href="/corso-sviluppo-personale">
-            <span className="text-[#010133] hover:text-[#F8C112] transition duration-300 font-medium cursor-pointer">
-              Percorso Sviluppo Personale
-            </span>
-          </Link>
-          
           <button onClick={scrollToRegister}>
             <span className="hidden md:block bg-[#F8C112] hover:bg-yellow-500 transition duration-300 text-[#010133] font-medium px-4 py-2 rounded-md shadow-sm cursor-pointer">
               Riserva il tuo posto
