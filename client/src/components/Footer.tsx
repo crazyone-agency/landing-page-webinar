@@ -29,39 +29,21 @@ export default function Footer() {
             
             <div className="md:flex md:space-x-8">
               <div className="mb-6 md:mb-0">
-                <h3 className="font-semibold mb-3">Contatti</h3>
+                <h3 className="font-semibold mb-3 text-right">Contatti</h3>
                 <ul className="space-y-2 text-sm text-gray-300">
-                  <li className="flex items-center">
-                    <Mail size={14} className="mr-2" />
+                  <li className="flex items-center justify-end">
                     <a href="mailto:info@sgpeople.it" className="hover:text-[#F8C112]">info@sgpeople.it</a>
+                    <Mail size={14} className="ml-2" />
                   </li>
-                  <li className="flex items-center">
-                    <Phone size={14} className="mr-2" />
+                  <li className="flex items-center justify-end">
                     <a href="tel:+393206834979" className="hover:text-[#F8C112]">+39 320 683 4979</a>
+                    <Phone size={14} className="ml-2" />
                   </li>
-                  <li className="flex items-center">
-                    <MapPin size={14} className="mr-2" />
+                  <li className="flex items-center justify-end">
                     <span>Via Mazzini 1, 24019 Bergamo (BG)</span>
+                    <MapPin size={14} className="ml-2" />
                   </li>
                 </ul>
-              </div>
-              
-              <div>
-                <h3 className="font-semibold mb-3">Seguici</h3>
-                <div className="flex space-x-4">
-                  <a href={socialLinks.facebook} className="text-white hover:text-[#F8C112] transition-colors" target="_blank" rel="noopener noreferrer">
-                    <Facebook size={20} />
-                  </a>
-                  <a href={socialLinks.linkedin} className="text-white hover:text-[#F8C112] transition-colors" target="_blank" rel="noopener noreferrer">
-                    <Linkedin size={20} />
-                  </a>
-                  <a href={socialLinks.instagram} className="text-white hover:text-[#F8C112] transition-colors" target="_blank" rel="noopener noreferrer">
-                    <Instagram size={20} />
-                  </a>
-                  <a href={socialLinks.youtube} className="text-white hover:text-[#F8C112] transition-colors" target="_blank" rel="noopener noreferrer">
-                    <Youtube size={20} />
-                  </a>
-                </div>
               </div>
             </div>
           </div>
