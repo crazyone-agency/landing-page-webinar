@@ -55,7 +55,7 @@ export default function HeroSection() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row gap-8 items-center">
           <motion.div 
-            className="md:w-3/5"
+            className="md:flex-grow"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -95,11 +95,14 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <div className="flex flex-col gap-2 justify-center items-center">
-              <video width="300" height="340" className="inset-shadow-xl" autoPlay={true} muted={true} controls={true}>
-                <source src="https://webinar.sgpeople.it/hero.mp4" type="video/mp4" />
-              </video>
-              <div className="bg-[#F8C112] text-[#010133] font-bold text-sm px-3 py-1 rounded-full shadow-md">
+            <div className="relative gap-2 justify-center items-center">
+              <div className="absolute -inset-1 bg-[#F8C112] rounded-lg blur-sm"></div>
+              <div className="relative p-2">
+                <video width="300" height="340" className="z-[30] inset-shadow-xl rounded-md" autoPlay={true} muted={true} controls={true}>
+                  <source src="https://webinar.sgpeople.it/hero.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div className="absolute z-[40] top-4 left-4 bg-[#F8C112] text-[#010133] font-bold text-sm px-3 py-1 rounded-full shadow-md">
                 <CountdownTimer targetDate={webinarDate}/>
               </div>
             </div>
