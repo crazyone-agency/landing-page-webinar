@@ -95,15 +95,12 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <div className="relative">
-              <div className="absolute -inset-1 bg-[#F8C112] rounded-lg blur-sm"></div>
-              <img 
-                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                alt="Gruppo di lavoro con Salvatore Garufi" 
-                className="relative rounded-lg w-full max-w-md mx-auto shadow-xl"
-              />
-              <div className="absolute top-4 right-4 bg-[#F8C112] text-[#010133] font-bold text-sm px-3 py-1 rounded-full shadow-md">
-                <CountdownTimer targetDate={webinarDate} />
+            <div className="flex flex-col gap-2 justify-center items-center">
+              <video width="300" height="340" className="inset-shadow-xl" autoPlay={true} muted={true} controls={true}>
+                <source src="https://webinar.sgpeople.it/hero.mp4" type="video/mp4" />
+              </video>
+              <div className="bg-[#F8C112] text-[#010133] font-bold text-sm px-3 py-1 rounded-full shadow-md">
+                <CountdownTimer targetDate={webinarDate}/>
               </div>
             </div>
           </motion.div>
