@@ -34,7 +34,7 @@ export default function FloatingCta() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed bottom-6 right-6 z-50"
+          className="fixed bottom-6 right-6 z-[30]"
         >
           <button 
             onClick={handleClick}
