@@ -106,28 +106,6 @@ export default function HowItWorksSection() {
               </div>
             </div>
           </motion.div>
-          
-          <motion.div 
-            className="mt-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <div className="bg-[#010133] rounded-lg p-8 text-white text-center">
-              <h3 className="font-poppins font-bold text-xl md:text-2xl mb-4">
-                Pronti ad iniziare la tua rivoluzione a piccoli passi?
-              </h3>
-              <p className="mb-6">
-                Il tuo primo piccolo passo è registrarti ora. I posti sono limitati, non perdere questa opportunità!
-              </p>
-              <Link href="#register-now">
-                <span className="inline-block bg-[#F8C112] hover:bg-yellow-500 transition duration-300 text-[#010133] font-bold px-8 py-4 rounded-md text-center shadow-lg cursor-pointer">
-                  Voglio Partecipare!
-                </span>
-              </Link>
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>
