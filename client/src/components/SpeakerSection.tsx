@@ -34,7 +34,7 @@ export default function SpeakerSection() {
                 Salvatore Garufi
               </h2>
               <p className="text-gray-700 mb-4">
-                Fondatore di SG People Group, psicologo e consulente aziendale con oltre 15 anni di esperienza nell'applicazione delle neuroscienze per il miglioramento personale e professionale.
+                Fondatore di SG People Group, psicologo e consulente aziendale con oltre 9 anni di esperienza nell'applicazione delle neuroscienze e della psicologia per il miglioramento personale e professionale.
               </p>
               <p className="text-gray-700 mb-6">
                 Salvatore è noto per la sua capacità di tradurre concetti complessi di neuroscienze in strategie pratiche e immediatamente applicabili. Ha formato più di 1200 professionisti con il suo approccio di "Comunicazione Smart", combinando rigore scientifico e pragmatismo.
