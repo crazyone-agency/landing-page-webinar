@@ -9,15 +9,13 @@
     <link rel="stylesheet" href="/css/activecampaign-form.css" />
     <title>SG People - Rivoluzione a piccoli passi</title>
     <!-- Script per Clarity -->
-    <script type="text/javascript">
+    <!-- Script per l'evento di successo del form ActiveCampaign -->
+    <script>
       (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
       })(window, document, "clarity", "script", "rbs8db965p");
-    </script>
-    <!-- Script per l'evento di successo del form ActiveCampaign -->
-    <script>
       // Aggiungiamo un listener per intercettare il successo dell'invio del form di ActiveCampaign
       document.addEventListener('DOMContentLoaded', function() {
         // Funzione che verifica periodicamente se il form è stato inviato con successo
